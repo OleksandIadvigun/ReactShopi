@@ -1,0 +1,78 @@
+
+.footerSocialMedia {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.footerSocialMediaIcon {
+    margin: 0px 4px;
+    width: 25px;
+    height: 25px;
+}
+
+.footerInfo  {
+    display: flex;
+    justify-content: center;
+}
+
+.footerInfoLeft, .footerInfoCenter, .footerInfoRight {
+    font-size: xx-small;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+.footerInfoName, .footerInfoEmail, .footerInfoNumber {
+    margin-bottom: 5px;
+}
+
+.footerInfoName, .footerInfoReturns {
+    text-align: start;
+}
+
+.footerInfoEmail, .footerInfoTerms {
+    text-align: center;
+}
+
+.footerInfoNumber, .footerInfoContact {
+    text-align: end;
+    margin-bottom: 5px;
+}
+
+.footerDate {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footerSeparator {
+    flex-grow: 1;
+    border: none;
+    height: 1px;
+    background-color: lightgoldenrodyellow;
+    width: 100%;
+}
+
+.footerName {
+    display: flex;
+    justify-content: center;
+}
+
+.footerBottomName {
+    text-transform: uppercase;
+    font-size: large;
+    margin: 0px 20px;
+}
+.linked{
+    font-size: large;
+    text-decoration: none;
+    margin-top: 5px;
+    color: rgb(36, 171, 233);
+}
+.linked:hover{
+    color: rgb(162, 205, 212);
+    text-decoration: none;
+}

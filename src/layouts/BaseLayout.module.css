@@ -1,0 +1,30 @@
+.mainWrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+main{
+    position: relative;
+    flex: 1;
+    /*padding: 15px;*/
+    overflow-y: auto
+}
+
+header {
+    display: flex;
+    flex: 0.10;
+    flex-direction: column;
+    /*background-color: white;*/
+}
+
+footer {
+    margin-top: 90px;
+    color: lightgoldenrodyellow;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
+}
+
