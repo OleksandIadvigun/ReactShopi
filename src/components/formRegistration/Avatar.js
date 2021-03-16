@@ -3,7 +3,7 @@ import DefaultAvatar from "../../data/defAvat.png";
 
 const  Avatar = props => {
     const{
-        avatar,
+        logo,
         onChange,
 
 
@@ -15,9 +15,10 @@ const  Avatar = props => {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.onload = event => {
+            console.log(event.target, ' From logo')
             onChange({
                 target: {
-                    name: "avatar",
+                    name: "logo",
                     value: event.target.result
                 }
                 // console.log(event.target.result)
@@ -32,7 +33,7 @@ const  Avatar = props => {
 
   return (
     <div>
-        <img className="avatar-preview" src={avatar||DefaultAvatar}/>
+        <img className="avatar-preview" src={logo||DefaultAvatar}/>
 
         <div className="form-group">
             <label className="form-check-label" htmlFor="flexCheckDefault">
@@ -42,9 +43,9 @@ const  Avatar = props => {
                 <div className="custom-file my">
             <input type="file" className=" custom-file-input my"
 
-                   id="avatar"
+                   id="logo"
                    onChange={onChangeAvatar}
-                   name="avatar"
+                   name="logo"
 
             />
                     <label className="custom-file-label my " htmlFor="avatar">

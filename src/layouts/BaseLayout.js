@@ -3,13 +3,13 @@ import Header from "../components/common/header/Header";
 import Footer from "../components/common/footer/Footer";
 
 
-export default function BaseLayout({children}) {
+export default function BaseLayout({children, unSetUser}) {
   return (
    <div className={styles.mainWrapper}>
-       <header>  <Header/> </header>
+       <header>  <Header unSetUser={unSetUser}/> </header>
        <main> {children}
-       <footer> <Footer /> </footer>
        </main>
+       <footer> <Footer /> </footer>
        </div>
   );
 }

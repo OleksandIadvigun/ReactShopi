@@ -2,38 +2,38 @@ import './FormReg.css';
 import React from "react";
 import Basic from "./Basic";
 import Contacts from "./Contacts";
-import Avatar from "./Avatar";
 import Finish from "./Finish";
 import Steps from "./Steps";
-import RegisterService from "../../services/RegisterService";
-import ResponseAfterReg from "./ResponseAfterReg";
+import RespAfterEdit from "./RespAfterEdit";
+import UserService from "../../services/UserService";
 
-export default class MainFormReg extends React.Component {
+export default class EditForm extends React.Component {
     constructor() {
         super();
+        const userFromStorage = JSON.parse(localStorage.getItem('user'));
+        if (userFromStorage != null) {
+            console.log(userFromStorage, " userFromStorage")
             this.state = {
-                username: "",
-                firstname: "",
-                lastname: "",
+                username: userFromStorage.username,
+                firstname: userFromStorage.firstname,
+                lastname: userFromStorage.lastname,
                 password: "",
                 repeatPassword: "",
                 address: {
-                    country: "",
-                    city: ""
+                    country: userFromStorage.address.country,
+                    city: userFromStorage.address.city
                 },
-                sex: "male",
+                sex: userFromStorage.sex,
                 agree: false,
                 logo: null,
-                age: 16,
+                age: userFromStorage.age,
                 step: 1,
                 doneStep: 0,
-                email: '',
-                mobile: '',
+                email: userFromStorage.email,
+                mobile: userFromStorage.mobile,
                 response: '',
                 errors: {
                     username: false,
-                    firstname: false,
-                    lastname: false,
                     password: false,
                     repeatPassword: false,
                     age: false,
@@ -41,20 +41,24 @@ export default class MainFormReg extends React.Component {
                     mobile: false
 
                 }
-            };
+            }
         }
-
+    }
 
     onSubmit = (event) => {
         event.preventDefault();
         if (this.state.agree) {
-            const {sendNewUser} = RegisterService();
-            sendNewUser(this.state).then(value => this.setState({response: value.data})).then(value => {
+            const {editUser} = UserService();
+            editUser(this.state).then(value => {this.setState({response: "Success! User has been edited!"})
+            localStorage.setItem('user', JSON.stringify(value.data));
+            console.log("Success!!! resp from server", value.data)
+            }
+            ).then(value => {
                     this.setState({step: 4})
                     this.setState({doneStep: 0})
+                    console.log("Success!!! Edited", this.state)
                 }
             );
-            console.log("Success!!! Added to DB", this.state)
         }
     }
 
@@ -78,8 +82,8 @@ export default class MainFormReg extends React.Component {
         switch (step) {
             case 1:
                 if
-                (username.length < 5 || username.length > 10) {
-                    errors.username = "Required from 5 to 10 charters";
+                (username.length < 5) {
+                    errors.username = "Minimum 5 charters required";
                 }
                 if
                 (firstname.length < 2 || firstname.length > 15) {
@@ -120,10 +124,6 @@ export default class MainFormReg extends React.Component {
         }
 
         this.setState({errors: errors})
-
-        // if (Object.keys(errors).length === 0) {
-        // }
-
         return errors;
 
     }
@@ -131,7 +131,6 @@ export default class MainFormReg extends React.Component {
 
     onChange = (event) => {
         this.setState({[event.target.name]: event.target.value})
-
     }
 
     onSelectCountry = (event) => {
@@ -172,38 +171,14 @@ export default class MainFormReg extends React.Component {
             })
     };
 
-    nextPage = (e) => {          // todo ???
+    nextPage = (e) => {
         e.preventDefault();
         const errors = this.validation();
-        this.setState({response: ''})
         const isError = Object.keys(errors).length;
-        const err = {};
         if (isError === 0) {
-            if (this.state.doneStep <= 1 && this.state.step <= 2) {
-                console.log("in method check")
-                const {checkLoginAndEmail} = RegisterService();
-                let data = {
-                    username: this.state.username,
-                    email: this.state.email
-                }
-                checkLoginAndEmail(data).then(value => {
-                    console.log("checkong log.." + data.username , data.email)
-                    if (value.data.toString().includes('Username') || value.data.toString().includes('Email') ) {
-                        console.log("val:",value.data.toString(), "dataVal")
-                        // this.setState({response: value.data})
-                        this.setState({errors: {email: "Email is already exist!",
-                                                     username: "Username is already exist!"}})
-
-                    }
-                    else {
-                        console.log("next")
-                        this.setState({doneStep: this.state.doneStep + 1})
-                        this.setState({step: this.state.step + 1})
-                    }
-                }).catch(error => {
-                    console.log(error + " er from server")
-                })
-            }
+            console.log("next")
+            this.setState({doneStep: this.state.doneStep + 1})
+            this.setState({step: this.state.step + 1})
         }
     }
 
@@ -218,19 +193,19 @@ export default class MainFormReg extends React.Component {
 
         return (
             this.state.step === 4 ?
-                <div className="response">
-                    <ResponseAfterReg data={this.state.response}
-                    />
-                </div>
+                    <div className="response" >
+                        <RespAfterEdit data={this.state.response}
+                        />
+                    </div>
                 :
-                    <div className="MyContainer">
-                        <div className="pagination">
-                        <button type="button"
-                                className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
-                                onClick={this.prevPage}
-                        >
-                        </button>
-                        </div>
+            <div className="MyContainer">
+                <div className="pagination">
+                    <button type="button"
+                            className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
+                            onClick={this.prevPage}
+                    >
+                    </button>
+                </div>
                 <div className={this.state.step < 4 ? "form-container card" : " empty"}>
                     <Steps step={this.state.step} doneStep={this.state.doneStep}/>
                     <form className="form card-body">
@@ -278,20 +253,19 @@ export default class MainFormReg extends React.Component {
                                 city={this.state.address.city}
                                 agree={this.state.agree}
                                 onSubmit={this.onSubmit}
-                                edit={false}
+                                edit={true}
                             />
                         )}
                     </form>
                 </div>
-                        <div className="pagination">
-                            <button type="button" id="id-w"
-                                    className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
-                                    onClick={this.nextPage}
-                            >
-                            </button>
-                        </div>
+                <div className="pagination">
+                    <button type="button" id="id-w"
+                            className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
+                            onClick={this.nextPage}
+                    >
+                    </button>
+                </div>
             </div>
-
         );
     }
 }

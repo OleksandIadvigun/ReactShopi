@@ -11,7 +11,10 @@ const Contacts = props => {
         city,
         email,
         mobile,
-        errors
+        errors,
+        onSelect,
+        response
+
     } = props;
 
    const getOptions = arrayOfCountries => {
@@ -21,7 +24,7 @@ const Contacts = props => {
 
     }
     const filteredCities = () => {
-        const con = cities.filter(c => c.country == country)   //todo ???
+        const con = cities.filter(c => c.country === country)  //todo ???
            .map(value => value);
        // console.log(con);
        return con;
@@ -36,6 +39,9 @@ const Contacts = props => {
 
     return (
         <div>
+            <div>
+                <div className="error">{response}</div>
+            </div>
             <div className="form-group">
                 <Field
                     id="mobile"
@@ -64,18 +70,18 @@ const Contacts = props => {
                         id="country"
                         value={country}
                         name="country"
-                        onChange={onChange}
+                        onChange={onSelect}
                 >
                     <option selected>Choose your country</option>
                     {getOptions(countries)}
                 </select>
-
+                <br/>
                 <label>Select city</label>
                 <select className="form-control" aria-label="Default select example"
                         id="city"
                         value={city}
                         name="city"
-                        onChange={onChange}
+                        onChange={onSelect}
                 >
                     <option selected>Choose you city</option>
                     {getOptionsCity(filteredCities())}

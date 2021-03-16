@@ -8,19 +8,33 @@ import {
     Link,
     withRouter
 } from 'react-router-dom';
+import {Redirect} from "react-router";
+import LoginService from "../../../services/LoginService";
+import ContexLoggedUser from "../../../ContexLoggedUser";
+import MyContext from "../../../MyContext";
 
-export const Navbar = () => {
+export const Navbar = ({unSetUser}) => {
 
-    const [activeStep, setMenuClick] = useState(1);
-    const [loggedUser, setLogged] = useState(true);
+    const [activeStep, setMenuClick] = useState(0);
+    const [loggedUser, setLogged] = useState(false);
     useEffect(() => {
-        console.log("effect used")
+        // console.log("active step effect used")
     }, [activeStep])
     useEffect(() => {
-        console.log("effect used")
+        if(localStorage.getItem('user')){
+            // console.log(localStorage.getItem('user') , " in useEsf logged user")
+            setLogged(true);
+        }
     }, [loggedUser])
+    const {deleteUserFromLocalStorage} = LoginService();
     return (
         <div>
+            <ContexLoggedUser.Consumer>
+                {value=>{if(value){
+                    // console.log("Set Status true in Nav Bar")
+                    setLogged(true)
+                }}}
+            </ContexLoggedUser.Consumer>
             <div className={styles.navbarItems}>
                 <ul className={styles.navBarActive}>
                     <Link to="/" className={activeStep === 1 ? styles.navLinkClicked : styles.navLink
@@ -51,20 +65,28 @@ export const Navbar = () => {
                            console.log("IN clicked...")
                            setMenuClick(4)
                        }}>Shops</Link>
-                    <a href="/blog" className={activeStep === 5 ? styles.navLinkClicked : styles.navLink &&
-                    loggedUser ? styles.disabled : styles.navLink
+                    <Link to="/login" className={ loggedUser ? styles.disabled : styles.navLink &&
+
+                        activeStep === 5 ? styles.navLinkClicked : styles.navLink
                     }
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(5)
-                       }}>Log in</a>
-                    <a href="/blog" className={activeStep === 6 ? styles.navLinkClicked : styles.navLink &&
+                       }}>Log in</Link>
+                    <Link to="/login" className={activeStep === 6 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
                     }
                        onClick={() => {
-                           console.log("IN clicked...")
-                           setMenuClick(6)
-                       }}>Log out</a>
+                           console.log("IN log out...")
+                           deleteUserFromLocalStorage();
+                           unSetUser();
+                           setMenuClick(5)
+                           setLogged(false);
+                           // console.log(JSON.parse(localStorage.getItem('user')) , " user From LOCAL")
+
+
+
+                       }}>Log out</Link>
                     <Link to="/registration" className={activeStep === 7 ? styles.navLinkClicked : styles.navLink &&
                     loggedUser ? styles.disabled : styles.navLink
                     }
@@ -75,8 +97,16 @@ export const Navbar = () => {
 
                     >Sing up</Link>
                 </ul>
+                {loggedUser?
+                    <MyContext.Consumer>
+                        {value => {if(value){
+                            // console.log(value + "VALUEEEEEE")
+                            return <Link to={'loggedIn'} className={styles.username} onClick={()=>{
+                                setMenuClick(0)}
+                            }>{value}</Link>}}}
+                    </MyContext.Consumer>
+                    :""}
             </div>
-
         </div>
     );
 }

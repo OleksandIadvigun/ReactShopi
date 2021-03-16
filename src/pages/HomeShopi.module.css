@@ -1,46 +1,47 @@
 .mainContainer {
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
     padding-top: 8px;
-    /*background: #424242;*/
+    /*background: #b51818;*/
     border-radius: 8px;
-    /*margin-bottom: 10px;*/
+    margin-bottom: 80px;
 }
 
 .phonePhoto {
-    /*display: grid;*/
+    display: flex;
     justify-content: center;
-    width: 330px;
-    height: 630px;
-    background-color: #424242;
+    flex: 0 0 auto ;
+    height: 100%;
+    /*background-color: #8c6d29;*/
     border-radius: 8px;
 }
 
 .text {
-    font-size: 17px;
+    font-size: 16px;
+    line-height: 2;
+    /*letter-spacing: 0.3px;*/
     color: #282c34;
-    margin-top: 10px;
-    margin-bottom: 18px;
-    width: 70%;
-    padding: 15px ;
+    padding: 15px 15px 15px 30px ;
     position: center;
     text-align: left;
     justify-content: center;
-    background-color: white;
+    /*background-color: white;*/
     border-radius: 5px;
-
 }
 
 .welcomeText {
-    color: #858583;
-    font-size: 21px;
+    margin-top: 10px;
+    color: #6d726d;
+    font-size: 22px;
     font-weight: bold;
     margin-bottom: 5px;
 }
+/*.shopi{*/
+/*    color: #CD5C5C ;*/
+/*}*/
 
 .title {
-    color: #8f8f08;
+    color: #088f69;
     font-size: 20px;
     margin-bottom: 5px;
 }
@@ -48,10 +49,10 @@
     position: relative;
     justify-content: center;
     text-align: center;
-    color: #8f8f08;
+    color: #454540;
     font-size: 20px;
     margin-top: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 .href{
     margin-right: 5px ;
@@ -69,9 +70,12 @@
     text-decoration: none;
 }
 .download{
-    margin-top: 50px;
+    margin-top: 40px;
     margin-bottom: 20px;
 }
 .li{
     margin-bottom: 15px;
+}
+img {
+    max-width: 100%;
 }

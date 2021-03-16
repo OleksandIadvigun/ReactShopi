@@ -1,5 +1,6 @@
 
 import Field from "./Field";
+import React from "react";
 
 
 const Basic = props => {
@@ -12,11 +13,17 @@ const Basic = props => {
         repeatPassword,
         age,
         decrementAge,
-        incrementAge
+        incrementAge,
+        response,
+        firstname,
+        lastname
     } = props;
 
     return (
         <div>
+            <div>
+                <div className="error">{response}</div>
+            </div>
             <Field
                 id="username"
                 labelText="Username"
@@ -26,6 +33,28 @@ const Basic = props => {
                 onChange={onChange}
                 name="username"
                 error={errors.username}
+
+            />
+            <Field
+                id="firstname"
+                labelText="Firstname"
+                type="text"
+                placeholder="Enter firstname"
+                value={firstname}
+                onChange={onChange}
+                name="firstname"
+                error={errors.firstname}
+
+            />
+            <Field
+                id="lastname"
+                labelText="Lastname"
+                type="text"
+                placeholder="Enter lastname"
+                value={lastname}
+                onChange={onChange}
+                name="lastname"
+                error={errors.lastname}
 
             />
 
@@ -57,7 +86,7 @@ const Basic = props => {
                 </label>
                 <div id="checker" className="form-check">
                     <input className="form-check-input" type="radio" value="male" id="male"
-                           name="gender"
+                           name="sex"
                            checked={gender === "male"}
                            onChange={onChange}
                     />
@@ -67,7 +96,7 @@ const Basic = props => {
                 </div>
                 <div className="form-check" >
                     <input className="form-check-input" type="radio" value="female" id="female"
-                           name="gender"
+                           name="sex"
                            checked={gender === "female"}
                            onChange={onChange}
 

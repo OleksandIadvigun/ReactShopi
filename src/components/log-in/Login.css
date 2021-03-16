@@ -1,0 +1,31 @@
+
+.M {
+    display: flex;
+    width: 500px;
+    height: 400px;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    border-radius: 5px;
+    /*border: 1px solid #bebaba;*/
+}
+
+
+.error{
+    display: block;
+    color: red;
+    font-size: 12px;
+}
+
+.userDetail{
+    justify-content: center;
+    text-align: start;
+    align-self: start;
+    /*background: #61dafb;*/
+    border: 1px solid grey;
+    line-height: 2;
+    padding: 25px;
+    font-size: 17px;
+    border-radius: 10px;
+}
+

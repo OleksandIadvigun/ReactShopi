@@ -2,8 +2,8 @@
 .headerTop{
     display: flex;
     width: 100%;
-    height: 70px;
-    /*background-color: red;*/
+    height: 72px;
+    /*background-color: #333333;*/
 }
 .headerTopLogo{
     display: flex;
@@ -38,25 +38,17 @@
 .headerTopSeparator{
     width: 100%;
     border: none;
-    height: 2px;
-    margin-top: 2px;
-    background-color: black;
+    height: 1px;
+    /*margin-top: 2px;*/
+    background-color: #b85050;
 }
-.username{
-    position: relative;
 
-    /*background: #b5b5b5;*/
-    text-align: center;
-    margin-left: 75%;
-    width: fit-content;
-    font-size: 18px;
-    color: rgb(47, 44, 44);
-    /*background: #8cb7b7;*/
-    border: 1px solid #ded9d9;
-    padding-right: 15px;
-    padding-left: 15px;
-}
 .userBody{
     background: #61dafb;
+}
+.username:hover{
+    border: 1px solid #2a88c6;
+    text-decoration: none;
+    color: rgb(47, 44, 44);;
 }
 

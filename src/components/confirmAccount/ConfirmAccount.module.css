@@ -1,0 +1,17 @@
+.response{
+    /*margin-top: 15%;*/
+    position: relative;
+    padding: 3%;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    font-size: 19px;
+    color: #019cb8;
+    /*background: white;*/
+    border: 1px solid darkslategrey;
+    border-radius: 50px;
+}
+.mesText{
+    font-size: 18px;
+    color: #6e6c6c;
+}

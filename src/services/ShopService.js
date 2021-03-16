@@ -5,7 +5,7 @@ export default function ShopService() {
   return {
    getShops: () => {
        console.log("in getShops");
-       return AXIOS.get('/shop');
+       return AXIOS.get('/shops');
    }
 };
 }

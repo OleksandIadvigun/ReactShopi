@@ -1,11 +1,29 @@
 
-.form-container {
-    position: absolute;
-    left: 33%;
-    /*transform: translate(-50%, -50%);*/
-    width: 500px;
-    height: 660px;
+.MyContainer{
+    display: flex;
+    /*align-self: center;*/
+    /*background: white;*/
+    margin-bottom: 70px;
+    width: 65%;
     justify-content: center;
+    /*align-content: center;*/
+    /*text-align: center;*/
+
+
+}
+.form-container {
+    /*position: absolute;*/
+    /*left: 33%;*/
+    /*transform: translate(-50%, -50%);*/
+    align-self: center;
+    justify-self: center;
+    text-align: center;
+    /*background: green;*/
+    width: 500px;
+    height: 720px;
+    justify-content: center;
+    margin-left: 25px ;
+    margin-right: 25px;
 }
 
 /*.invalid-feedback {*/
@@ -13,6 +31,7 @@
 /*}*/
 
 .card {
+    /*background: green;*/
     margin-top: 2%;
 }
 
@@ -45,7 +64,7 @@
 }
 
 .step:not(:first-child)::before {
-    height: 0.1em;
+    height: 0.05rem;
     width: 100%;
     bottom: 0;
     left: -50%;
@@ -57,8 +76,8 @@
 }
 
 .step__marker {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-align: center;
@@ -69,30 +88,31 @@
     justify-content: center;
     background: #b5b5b5;
     color: #fff;
-    border: 4px solid #fff;
+    border: 2px solid #faf7f7;
     z-index: 1;
 }
 
 .step.is-completed:not(:first-child)::before {
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
+    /*background: linear-gradient(90deg, rgb(140, 145, 144) 0%, rgb(37, 44, 48) 100%);*/
+    background: rgb(183, 179, 179);
 }
 
 .step.is-completed .step__marker {
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
-    border: 4px solid #fffefe;
+    background: linear-gradient(90deg, rgb(152, 157, 155) 0%, rgb(37, 44, 48) 100%);
+    border: 2px solid #fffefe;
 }
 
 .step.is-active:not(:first-child)::before {
-    background: #8ed6d4;
+    background: #CD5C5C;
 }
 
 .step.is-active .step__marker {
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
-    border: 4px solid #8ed6d4;
+    background: linear-gradient(90deg, rgb(152, 157, 155) 0%, rgb(37, 44, 48) 100%);
+    border: 2px solid #fffefe;
 }
 
 .step__title {
-    font-weight: 700;
+    font-weight: 600;
 }
 .avatar-preview{
     position: relative;
@@ -114,8 +134,6 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    margin-bottom: 3%;
-
     width: 200px;
 }
 
@@ -126,8 +144,12 @@
 }
 
 .pagination{
-    justify-content: space-between;
-    margin: 10px;
+    /*position: absolute;*/
+    justify-self: center;
+    /*width: 750px;*/
+    text-align: center;
+    align-self: center;
+
 }
 
 .red_text{
@@ -135,40 +157,102 @@
 }
 .navLink {
     text-decoration: none;
-    padding: 0.4rem 0.9rem;
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
+    padding: 0.2rem 0.9rem 0.2rem 0.9rem;
+    background: linear-gradient(90deg, rgb(140, 143, 143) 0%, rgb(71, 69, 69) 100%);
     color: lightgoldenrodyellow;
+    border: none;
+    transition: all 0.2s ease-out;
     border-radius: 4px;
-    border: white;
 }
 
 .navLink:hover{
-    background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);
+    /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
+    background: linear-gradient(90deg, rgb(193, 187, 187) 0%, rgb(117, 115, 115) 100%);
+    color: #f8f8f6;
     border-radius: 4px;
     transition: all 0.2s ease-out;
-    color: #fcfcf7;
     text-decoration: none;
+    margin-right: 2px;
 
 }
-.navLinkClicked{
-    text-decoration: none;
-    padding: 0.4rem 0.8rem;
-    background: linear-gradient(90deg, rgb(231, 245, 245) 0%, rgb(193, 198, 200) 100%);
-    color: darkolivegreen;
-    border-radius: 4px;
+.navLinkNext {
+    background: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 100px solid rgb(138, 145, 141);
+    border-bottom: 50px solid transparent;
+    border-right: none;
+    transition: .2s linear;
+}
+
+.navLinkNext:hover{
+    border-left: 100px solid rgb(94, 96, 96);
+    transition: .2s linear;
 
 
 }
-.navLinkClicked:hover{
-    text-decoration: none;
-    background: linear-gradient(90deg, rgb(242, 248, 248) 0%, rgb(196, 208, 210) 100%);
-    color: darkolivegreen;
+
+.navLinkNextClicked{
+    background: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-left: 100px solid rgb(187, 193, 192);
+    border-bottom: 50px solid transparent;
+    border-right: none;
+    opacity: 80%;
+    transition: .2s linear;
+
+
 }
+.navLinkNextClicked:hover{
+    border-left: 100px solid rgb(171, 179, 176);
+    transition: .2s linear;
+}
+.navLinkPrev {
+    background: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-right: 100px solid rgb(138, 145, 141);
+    border-bottom: 50px solid transparent;
+    border-left: none;
+    transition: .2s linear;
+}
+
+.navLinkPrev:hover{
+    border-right: 100px solid rgb(94, 96, 96);
+    transition: .2s linear;
+
+}
+
+.navLinkPrevClicked{
+    background: none;
+    width: 0;
+    height: 0;
+    border-top: 50px solid transparent;
+    border-right: 100px solid rgb(187, 193, 192);
+    border-bottom: 50px solid transparent;
+    border-left: none;
+    transition: .2s linear;
+    opacity: 50%;
+
+}
+.navLinkPrevClicked:hover{
+    border-right: 100px solid rgb(171, 179, 176);
+    transition: .2s linear;
+}
+
 .info{
-    justify-content: left;
+    /*margin-top: 20px;*/
+    justify-content: center;
     text-align: left;
-
+    /*background: white;*/
+    margin-left: 170px;
+    margin-bottom: 40px;
 }
+
 input[type='radio']:after {
     width: 15px;
     height: 15px;
@@ -197,13 +281,13 @@ input[type='radio']:checked:after {
     border: 2px solid white;
 }
 #checker{
-margin-left: -16px;
+margin-left: -18px;
 }
 input[type='checkbox']:after {
     width: 24px;
     height: 24px;
     border-radius: 15px;
-    top: -2px;
+    top: -4px;
     left: -4px;
     position: relative;
     background-color: #cfcaca;
@@ -217,7 +301,7 @@ input[type='checkbox']:checked:after {
     width: 24px;
     height: 24px;
     border-radius: 15px;
-    top: -2px;
+    top: -4px;
     left: -4px;
     position: relative;
     background-color: #3da4b7;
@@ -227,6 +311,7 @@ input[type='checkbox']:checked:after {
     border: 5px solid #fcfcfd;
 }
 #sub{
+    margin-top: 10px;
     background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
     border-color: #019cb8 ;
     color: lightgoldenrodyellow;
@@ -285,4 +370,27 @@ option::selection{
    background-color: #d3d92c;
     color: #61dafb;
 }
-
+.empty{
+    display: none;
+}
+.response{
+    /*margin-top: 15%;*/
+    /*position: relative;*/
+    padding: 3%;
+    justify-content: center;
+    text-align: center;
+    align-self: center;
+    font-size: 19px;
+    color: #019cb8;
+    /*background: white;*/
+    border: 1px solid darkslategrey;
+    border-radius: 50px;
+}
+.mesText{
+    font-size: 18px;
+    color: #c85b5b;
+}
+.form-container {
+    background: none;
+    border: none;
+}
