@@ -20,6 +20,7 @@ import UserInfo from "./components/log-in/UserInfo";
 import MyContext from "./MyContext";
 import ContexLoggedUser from "./ContexLoggedUser";
 import EditForm from "./components/formRegistration/EditForm";
+import Alarms from "./components/alarms/Alarms";
 
 export default class App extends React.Component {
     username = JSON.parse(localStorage.getItem('user'))?.username
@@ -51,6 +52,7 @@ render()
                                 <Route path={'/registration'} exact={true} render={() => <MainFormReg/>}/>
                                 <Route path={'/products'} render={() => <Products/>}/>
                                 <Route path={'/shops'} render={() => <Shops/>}/>
+                                <Route path={'/alarms'} render={() => <Alarms/>}/>
                                 <Route path={'/confirm/:id'} render={() => <ConfirmAccount/>}/>
                                 <Route path={'/login'} render={() => <LogIn setUserName={this.setUserName}/>}/>
                                 <Route path={'/loggedIn'} render={() => <UserInfo/>}/>

@@ -22,11 +22,11 @@ export const Navbar = ({unSetUser}) => {
     }, [activeStep])
     useEffect(() => {
         if(localStorage.getItem('user')){
-            // console.log(localStorage.getItem('user') , " in useEsf logged user")
+            console.log(localStorage.getItem('user') , " in useEsf logged user")
             setLogged(true);
         }
     }, [loggedUser])
-    const {deleteUserFromLocalStorage} = LoginService();
+    const {deleteUserFromLocalStorage,deleteTokenFromLocalStorage} = LoginService();
     return (
         <div>
             <ContexLoggedUser.Consumer>
@@ -44,13 +44,13 @@ export const Navbar = ({unSetUser}) => {
                               console.log("IN clicked...")
                               setMenuClick(1)
                           }}>Home</Link>
-                    <a href="/about" className={activeStep === 2 ? styles.navLinkClicked : styles.navLink &&
+                    <Link to="/alarms" className={activeStep === 2 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
                     }
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(2)
-                       }}>Alarms</a>
+                       }}>Alarms</Link>
                     <Link to="/products" className={activeStep === 3 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
                     }
@@ -79,6 +79,7 @@ export const Navbar = ({unSetUser}) => {
                        onClick={() => {
                            console.log("IN log out...")
                            deleteUserFromLocalStorage();
+                           deleteTokenFromLocalStorage();
                            unSetUser();
                            setMenuClick(5)
                            setLogged(false);

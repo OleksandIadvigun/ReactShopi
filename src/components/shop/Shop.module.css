@@ -6,6 +6,7 @@
     border: 1px solid #727272 ;
     /*border: 1px solid brown;*/
     justify-content: space-between;
+    text-align: start;
     margin: 3px;
     transition: all 0.2s ease-out;
 }
@@ -13,10 +14,21 @@
 .item{
     position: relative;
     color: #2cc3d9;
-    width: 23%;
+    width: 20%;
     text-align: start;
     margin: 15px;
-    padding-left: 5%;
+    padding-left: 5px;
+    /*border: 1px solid white;*/
+}
+.itemNumber{
+    position: relative;
+    color: #2cc3d9;
+    width: 5%;
+    text-align: center;
+    margin: 15px;
+    padding: 5px;
+    border-radius: 100%;
+    /*border: 1px solid white;*/
 }
 .containerP:hover{
     transition: all 0.2s ease-out;
@@ -32,6 +44,7 @@
     background: linear-gradient(90deg, rgb(138, 145, 141) 0%, rgb(31, 34, 38) 100%);
     /*color: lightgoldenrodyellow;*/
     color: #ddd1d1;
+    justify-self: right;
     border-radius: 4px;
     border: white;
 
@@ -47,7 +60,10 @@
 
 }
 .contButtons{
+    display: flex;
+    flex-direction: column;
     text-align: right;
+    justify-content: space-between;
     position: relative;
     margin-bottom: 0;
     padding: 2px;
@@ -58,6 +74,7 @@
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
     background: linear-gradient(90deg, rgb(126, 122, 122) 0%, rgb(47, 45, 45) 100%);
     /*color: lightgoldenrodyellow;*/
+    align-self: flex-end;
     border: 1px solid #413e3e;
     color: #CD5C5C;
     border-radius: 3px;

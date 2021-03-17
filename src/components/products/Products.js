@@ -23,22 +23,24 @@ export default function Products() {
 
     const fetchProducts = async () => {
         console.log(' function fetch product')
-        try {
-            setIsLoading(true)
-            //const results = await getProducts();
-            await AXIOS.get('products').then(results => {
-                console.log(results.data + "data");
-                setProducts(results.data);
-                results.data.map(value => {
-                    console.log(value.id + " id " + value.name + " name")
+        if(localStorage.getItem('token')) {
+            try {
+                setIsLoading(true)
+                //const results = await getProducts();
+                await AXIOS.get('products').then(results => {
+                    console.log(results.data + "data");
+                    setProducts(results.data);
+                    results.data.map(value => {
+                        console.log(value.id + " id " + value.name + " name")
+                    })
                 })
-            })
-        } catch (e) {
-            console.error(e);
-        } finally {
-            setTimeout(() => {
-                setIsLoading(false);
-            },)
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setTimeout(() => {
+                    setIsLoading(false);
+                },)
+            }
         }
     }
 
@@ -50,23 +52,25 @@ export default function Products() {
             expiration: expiration,
             amount: amount
         }
-        try {
-            setIsLoadingInside(true);
-            await AXIOS.post('products', data).then((results => {
-                console.log(results.data.id + "post res from add");
-                setProducts(prev => new Array(1).fill(results.data).concat(prev));
-            })).then(v => {
-                setName('');
-                setExpiration('');
-                setAmount('')
-            })
+        if(localStorage.getItem('token')) {
+            try {
+                setIsLoadingInside(true);
+                await AXIOS.post('products', data).then((results => {
+                    console.log(results.data.id + "post res from add");
+                    setProducts(prev => new Array(1).fill(results.data).concat(prev));
+                })).then(v => {
+                    setName('');
+                    setExpiration('');
+                    setAmount('')
+                })
 
-        } catch (e) {
-            console.log(e + ' exception');
-        } finally {
-            setTimeout(() => {
-                setIsLoadingInside(false);
-            },)
+            } catch (e) {
+                console.log(e + ' exception');
+            } finally {
+                setTimeout(() => {
+                    setIsLoadingInside(false);
+                },)
+            }
         }
     }
 

@@ -134,7 +134,8 @@
     position: relative;
     justify-content: center;
     align-items: center;
-    width: 200px;
+    width: 180px;
+    margin-bottom: 20px;
 }
 
 .w-50{

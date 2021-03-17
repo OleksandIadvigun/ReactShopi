@@ -1,4 +1,4 @@
-import avatarDef from "../../data/avatarDef.png";
+import defAvat from "../../data/defAvat.png";
 import React from "react";
 import countries from "../../data/countries";
 
@@ -34,7 +34,7 @@ const Finish = props => {
     return (
 
         <div>
-            <img className="avatar-view" src={avatarDef}/>
+            <img className="avatar-view" src={defAvat}/>
             <div className="info">
 
                 <p><strong>Name:</strong> {name}</p>

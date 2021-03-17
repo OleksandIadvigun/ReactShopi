@@ -10,8 +10,8 @@ export default function LoginService() {
     saveTokenToLocalStorage: (data) => {
       return localStorage.setItem('token', JSON.stringify(data));
     },
-    getTokenFromLocalStorage: () => {
-      return JSON.parse(localStorage.getItem('token'));
+    deleteTokenFromLocalStorage: () => {
+      return localStorage.removeItem('token');
     },
     deleteUserFromLocalStorage: () => {
       return localStorage.removeItem('user');
