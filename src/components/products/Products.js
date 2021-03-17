@@ -1,7 +1,9 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Products.module.css";
 import Product from "../product/Product";
 import axios from "axios";
+import './trans.css'
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -23,7 +25,7 @@ export default function Products() {
 
     const fetchProducts = async () => {
         console.log(' function fetch product')
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             try {
                 setIsLoading(true)
                 //const results = await getProducts();
@@ -52,7 +54,7 @@ export default function Products() {
             expiration: expiration,
             amount: amount
         }
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             try {
                 setIsLoadingInside(true);
                 await AXIOS.post('products', data).then((results => {
@@ -74,7 +76,7 @@ export default function Products() {
         }
     }
 
-    const cancel = (e)=>{
+    const cancel = (e) => {
         e.preventDefault();
         setName('');
         setExpiration('');
@@ -156,7 +158,7 @@ export default function Products() {
 
     useEffect(() => {
         console.log("effect deleting...")
-        console.log(idForDel ,"id for del")// todo? render with component
+        console.log(idForDel, "id for del")// todo? render with component
         if (idForDel > 0) {
             console.log("Inside delete")
             deleteProd().then(res => res);
@@ -212,25 +214,37 @@ export default function Products() {
                                    }}
                             />
                             {!AddOrEdit ?
-                            <div className={styles.buttonAdd}>
+                                <div className={styles.buttonAdd}>
                                     <button className={styles.navLink} onClick={addProduct}>Add</button>
-                            </div>:
-                            <div className={styles.buttonAdd2}> <button className={styles.navLinkCancel} onClick={cancel}>Cancel</button>
-                                <button className={styles.navLink} onClick={editProd}>Edit</button></div>
-                                    }
+                                </div> :
+                                <section className={styles.buttonAdd2}>
+                                    <button className={styles.navLinkCancel} onClick={cancel}>Cancel</button>
+                                    <button className={styles.navLink} onClick={editProd}>Edit</button>
+                                </section>
+                            }
                         </div>
                     </form>
 
                 </div>
                 <div>
+                    <TransitionGroup>
                     {
-                        products.map((item,index) => <div key={item.id}><Product item={item}
-                                                                         edit={edit}
-                                                                         del={del}
-                                                                         key={item.id}
-                                                                                 index={index}
-                        /></div>)
+                        products.map((item, index) =>
+                            <CSSTransition
+                                key={item.id}
+                               timeout={500}
+                               classNames="example"
+                        >
+                            <Product item={item}
+                                     edit={edit}
+                                     del={del}
+                                     key={item.id}
+                                     index={index}
+                            />
+                            </CSSTransition>
+                        )
                     }
+                    </TransitionGroup>
                 </div>
             </div>
     );

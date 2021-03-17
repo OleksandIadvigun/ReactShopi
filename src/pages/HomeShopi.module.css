@@ -5,6 +5,8 @@
     /*background: #b51818;*/
     border-radius: 8px;
     margin-bottom: 80px;
+    transition-property: opacity;
+    transition-duration: 3s;
 }
 
 .phonePhoto {
@@ -14,6 +16,7 @@
     height: 100%;
     /*background-color: #8c6d29;*/
     border-radius: 8px;
+
 }
 
 .text {

@@ -9,6 +9,8 @@
     /*background: #b5b5b5;*/
     width: 80%;
     margin-bottom: 100px;
+    transition-property: opacity;
+    transition-duration: 1s;
 }
 .addProdCont{
     display: flex;

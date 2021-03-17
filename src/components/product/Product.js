@@ -1,4 +1,9 @@
-import styles from './Product.module.css'
+import styles from './Product.module.css';
+import React from "react";
+
+
+
+
 
 export default function Product({item,edit, del,index}) {
     const editHandler = (e) =>{
@@ -21,5 +26,6 @@ export default function Product({item,edit, del,index}) {
             <button className={styles.navLinkEdit} onClick={editHandler}>edit</button>
          </div>
     </div>
+
   );
 }

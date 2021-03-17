@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
-import ShopService from "../../services/ShopService";
 import axios from "axios";
 import styles from "./Shops.module.css";
-import Product from "../product/Product";
 import Shop from "../shop/Shop";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
+import '../products/trans.css';
 
 export default function Shops() {
     const [shops, setShops] = useState([]);
@@ -244,14 +244,24 @@ export default function Shops() {
 
                 </div>
                 <div>
+                    <TransitionGroup>
                     {
-                        shops.map((item,index) => <div key={item.id}><Shop item={item}
-                                                                                 edit={edit}
-                                                                                 del={del}
-                                                                                 key={item.id}
-                                                                                 index={index}
-                        /></div>)
+                        shops.map((item,index) =>
+                            <CSSTransition
+                                key={item.id}
+                                timeout={500}
+                                classNames="example"
+                            >
+                            <Shop item={item}
+                                  edit={edit}
+                                  del={del}
+                                  key={item.id}
+                                  index={index}
+                        />
+                            </CSSTransition>
+                        )
                     }
+                    </TransitionGroup>
                 </div>
             </div>
     );

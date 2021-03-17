@@ -7,10 +7,10 @@ export const  HomeShopi =()=>{
 
 
   return (
-    <div >
+    <div>
         <div className={styles.welcomeText}>Welcome to <span className={styles.shopi}>SHOPI</span></div>
         <div className={styles.title}>What is SHOPI?</div>
-        <section className={styles.mainContainer}>
+        <div className={styles.mainContainer}>
             <div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + "/photos/7ph.png"}/></div>
             <div className={styles.text}><TextContent/>
                 <div className={styles.title2}>Functions:</div>
@@ -25,7 +25,7 @@ export const  HomeShopi =()=>{
                     <a href="http://localhost:8080/download/shopi.zip" className={styles.href}>Click</a>
                     to download the apk file.</section>
             </div>
-        </section>
+        </div>
 
     </div>
   );

@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "./Alarms.module.css";
 import Product from "../product/Product";
 import Alarm from "../alarm/Alarm";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 export default function Alarms() {
     const [products, setProducts] = useState([]);
@@ -20,7 +21,7 @@ export default function Alarms() {
 
     const fetchAlarms = async () => {
         console.log(' function fetch product')
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             try {
                 setIsLoading(true)
                 //const results = await getProducts();
@@ -59,7 +60,7 @@ export default function Alarms() {
                 console.log(res.data.id + " editedProdFromResp");
                 newProducts.forEach((e, index) => {
                     if (e.id === res.data.id) {
-                        newProducts.splice(index,1);
+                        newProducts.splice(index, 1);
                     }
                 })
             }).then(r => {
@@ -78,7 +79,7 @@ export default function Alarms() {
 
     useEffect(() => {
         console.log("effect deleting...")
-        console.log(idForDone ,"id for del")// todo? render with component
+        console.log(idForDone, "id for del")// todo? render with component
         if (idForDone > 0 && expiration > 0) {
             console.log("Inside done")
             doneFunc().then(res => res);
@@ -98,14 +99,24 @@ export default function Alarms() {
         isLoading ? renderLoadingIndicator() :
             <div className={styles.container}>
                 <div>
-                    {
-                        products.map((item,index) => <div key={item.id}><Alarm item={item}
-                                                                                 done={done}
-                                                                                 key={item.id}
-                                                                                 index={index}
-                        /></div>)
-                    }
+                    <TransitionGroup>
+                        {
+                            products.map((item, index) =>
+                                <CSSTransition
+                                    key={item.id}
+                                    timeout={500}
+                                    classNames="example"
+                                >
+                                    <Alarm item={item}
+                                           done={done}
+                                           key={item.id}
+                                           index={index}
+                                    />
+                                </CSSTransition>
+                            )
+                        }
+                    </TransitionGroup>
                 </div>
             </div>
-  );
+    );
 }
