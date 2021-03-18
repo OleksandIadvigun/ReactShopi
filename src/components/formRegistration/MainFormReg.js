@@ -7,6 +7,7 @@ import Finish from "./Finish";
 import Steps from "./Steps";
 import RegisterService from "../../services/RegisterService";
 import ResponseAfterReg from "./ResponseAfterReg";
+import MySpinner from "../spinner/MySpinner";
 
 export default class MainFormReg extends React.Component {
     constructor() {
@@ -17,6 +18,7 @@ export default class MainFormReg extends React.Component {
                 lastname: "",
                 password: "",
                 repeatPassword: "",
+                loader: false,
                 address: {
                     country: "",
                     city: ""
@@ -48,13 +50,22 @@ export default class MainFormReg extends React.Component {
     onSubmit = (event) => {
         event.preventDefault();
         if (this.state.agree) {
-            const {sendNewUser} = RegisterService();
-            sendNewUser(this.state).then(value => this.setState({response: value.data})).then(value => {
-                    this.setState({step: 4})
-                    this.setState({doneStep: 0})
-                }
-            );
-            console.log("Success!!! Added to DB", this.state)
+            try {
+                this.setState({loader:true});
+                const {sendNewUser} = RegisterService();
+                sendNewUser(this.state).then(value => this.setState({response: value.data})).then(value => {
+                        this.setState({step: 4})
+                        this.setState({doneStep: 0})
+                    }
+                );
+                console.log("Success!!! Added to DB", this.state)
+            }catch (e){
+                console.log(e)
+            }finally {
+                setTimeout(()=>{
+                    this.setState({loader:false});
+                },)
+            }
         }
     }
 
@@ -106,7 +117,7 @@ export default class MainFormReg extends React.Component {
                 }
                 if
                 (!email.includes("@")) {
-                    errors.email = "Enter correct email with @";
+                    errors.email = "Please, input correct email address";
                 }
                 break;
 
@@ -121,8 +132,6 @@ export default class MainFormReg extends React.Component {
 
         this.setState({errors: errors})
 
-        // if (Object.keys(errors).length === 0) {
-        // }
 
         return errors;
 
@@ -224,6 +233,7 @@ export default class MainFormReg extends React.Component {
                 </div>
                 :
                     <div className="MyContainer">
+                        {this.state.loader? MySpinner: <div></div>}
                         <div className="pagination">
                         <button type="button"
                                 className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}

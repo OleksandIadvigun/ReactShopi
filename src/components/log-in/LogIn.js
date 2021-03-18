@@ -4,6 +4,7 @@ import AuthService from "../../services/AuthService";
 import './Login.css';
 import {Redirect} from "react-router";
 import LoginService from "../../services/LoginService";
+import MySpinner from "../spinner/MySpinner";
 
 class LogIn extends Component {
 
@@ -15,6 +16,7 @@ class LogIn extends Component {
             repeatPassword: '',
             responseError: '',
             login: false,
+            loader: false,
             errors: {
                 username: false,
                 password: false,
@@ -38,37 +40,48 @@ class LogIn extends Component {
         }
         // this.validation();
         if (Object.keys(this.validation()).length === 0) {
-            console.log(obj);
-            const {LogIn} = AuthService();
-            const{saveUserToLocalStorage, saveTokenToLocalStorage} = LoginService();
-            LogIn(obj).then(value => {
-                if (!value.data) {
-                    this.setState({responseError: "Login or password is incorrect!"})
-                    console.log(this.state.responseError);
-                } else {
-                    const{setUserName} = this.props;
-                    saveUserToLocalStorage(value.data);
-                    saveTokenToLocalStorage(value.data.token);
-                    setUserName(value.data.username);
-                    console.log(value.data.id+" id user")
-                }
-            }).catch(
-                error => {
-                    console.log(error, "error!!!!  + ")
-                    if (error.toString().includes('401')) {
-                        this.setState({responseError: "Your account is not activated!!"}
-                        )
+            try {
+                console.log(obj);
+                this.setState({loader: true});
+                const {LogIn} = AuthService();
+                const {saveUserToLocalStorage, saveTokenToLocalStorage} = LoginService();
+                LogIn(obj).then(value => {
+                    if (!value.data) {
+                        this.setState({responseError: "Login or password is incorrect!"})
+                        console.log(this.state.responseError);
                     } else {
-                        this.setState({responseError: "Error, check your network connection!"})
+                        const {setUserName} = this.props;
+                        saveUserToLocalStorage(value.data);
+                        saveTokenToLocalStorage(value.data.token);
+                        setUserName(value.data.username);
+                        console.log(value.data.id + " id user")
                     }
-                }
-            ).then(value => {
-                console.log(this.state.responseError,"response ereror state")
-                console.log(this.state.errors, 'this errors st')
-                if(!this.state.responseError ){
-                    this.setState({login: true})
-                }
-            });
+                }).catch(
+                    error => {
+                        console.log(error, "error!!!!  + ")
+                        if (error.toString().includes('401')) {
+                            this.setState({responseError: "Your account is not activated!!"}
+                            )
+                        } else {
+                            this.setState({responseError: "Error, check your network connection!"})
+                        }
+                    }
+                ).then(value => {
+                    console.log(this.state.responseError, "response ereror state")
+                    console.log(this.state.errors, 'this errors st')
+                    if (!this.state.responseError) {
+                        this.setState({login: true})
+                    }
+                });
+            }catch (e){
+                console.log(e);
+            }
+            finally {
+                setTimeout(()=>{
+                    this.setState({loader:false});
+                },)
+
+            }
         }
     }
     validation = () => {
@@ -143,6 +156,7 @@ class LogIn extends Component {
                         name="repeatPassword"
                         error={this.state.errors.repeatPassword}
                     />
+                    {this.state.loader? MySpinner: <div></div>}
                     <button type="submit" id="sub" className="btn btn-primary w-50" onClick={this.onSubmit}>Log in
                     </button>
                 </form>

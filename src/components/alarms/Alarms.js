@@ -4,6 +4,7 @@ import styles from "./Alarms.module.css";
 import Product from "../product/Product";
 import Alarm from "../alarm/Alarm";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import MySpinner from "../spinner/MySpinner";
 
 export default function Alarms() {
     const [products, setProducts] = useState([]);
@@ -37,7 +38,7 @@ export default function Alarms() {
             } finally {
                 setTimeout(() => {
                     setIsLoading(false);
-                },)
+                })
             }
         }
     }
@@ -90,15 +91,12 @@ export default function Alarms() {
         console.log(' effect fetch product')
         fetchAlarms();
     }, [])
-    const renderLoadingIndicator = () => {
-        return <div className="loading">
-            Loading...
-        </div>;
-    };
+
     return (
-        isLoading ? renderLoadingIndicator() :
+        isLoading ? MySpinner :
             <div className={styles.container}>
                 <div>
+                    {isLoadingInside? MySpinner: <div></div> }
                     <TransitionGroup>
                         {
                             products.map((item, index) =>

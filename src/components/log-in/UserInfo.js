@@ -4,9 +4,10 @@ import {Link} from "react-router-dom";
 export default function UserInfo() {
     const {getUserFromLocalStorage} = LoginService();
     const user = getUserFromLocalStorage();
+
     return (
         <div className="M">
-            <div >
+            <div>
                 <p className="mesText">
                     USER DETAILS
                 </p>
@@ -23,8 +24,6 @@ export default function UserInfo() {
                 <br/>
                 <Link to={'/editUser'} className="navLink"> Edit</Link>
             </div>
-
-
         </div>
     );
 }

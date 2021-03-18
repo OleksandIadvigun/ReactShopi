@@ -4,6 +4,10 @@ import styles from "./Shops.module.css";
 import Shop from "../shop/Shop";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import '../products/trans.css';
+import MyGoogleMap from "../googleMap/MyGoogleMap";
+import MySpinner from "../spinner/MySpinner";
+
+
 
 export default function Shops() {
     const [shops, setShops] = useState([]);
@@ -74,7 +78,7 @@ export default function Shops() {
             } finally {
                 setTimeout(() => {
                     setIsLoadingInside(false);
-                },)
+                })
             }
         }
     }
@@ -131,7 +135,7 @@ export default function Shops() {
         } finally {
             setTimeout(() => {
                 setIsLoadingInside(false);
-            },)
+            })
         }
     }
     const del = (item) => {
@@ -159,7 +163,7 @@ export default function Shops() {
         } finally {
             setTimeout(() => {
                 setIsLoadingInside(false);
-            },)
+            })
         }
     }
 
@@ -177,15 +181,12 @@ export default function Shops() {
         fetchShops();
     }, [])
 
-    const renderLoadingIndicator = () => {
-        return <div className="loading">
-            Loading...
-        </div>;
-    };
+
     return (
-        isLoading ? renderLoadingIndicator() :
+        isLoading ? MySpinner :
             <div className={styles.container}>
                 <div className={styles.addProdCont}>
+                    <div className={styles.contForm}>
                     <form className="form card-body">
                         <div className="form-group">
                             <label htmlFor='name'>New shop</label>
@@ -232,16 +233,28 @@ export default function Shops() {
                                        setSize(e.target.value)
                                    }}
                             />
+                            <TransitionGroup>
+                                {isLoadingInside? MySpinner: <div></div> }
                             {!AddOrEdit ?
                                 <div className={styles.buttonAdd}>
                                     <button className={styles.navLink} onClick={addProduct}>Add</button>
                                 </div>:
+                                <CSSTransition
+                                    in={AddOrEdit}
+                                    timeout={500}
+                                    classNames="example"
+                                >
                                 <div className={styles.buttonAdd2}> <button className={styles.navLinkCancel} onClick={cancel}>Cancel</button>
                                     <button className={styles.navLink} onClick={editProd}>Edit</button></div>
-                            }
+                                </CSSTransition>
+                            }</TransitionGroup>
                         </div>
                     </form>
-
+                    </div>
+                    <div className={styles.googleMaps}>
+                        {/*<MyGoogleMap/>*/}
+                        <a href='https://www.latlong.net/' target="_blank" rel="linked" className={styles.coord}>Get coordinates</a>
+                        </div>
                 </div>
                 <div>
                     <TransitionGroup>

@@ -6,13 +6,26 @@
 }
 .loading {
   position: absolute;
-  top: 43%;
-  left: 45%;
-  padding: 10px 30px 10px 40px;
-  opacity: 60%;
-  text-align: center;
-  background: linear-gradient(90deg, rgb(24, 71, 70) 0%, rgb(63, 65, 2) 100%);
-  font-size: 17px;
-  color: #ffffff;
-  border-radius: 25px;
+  top: 40%;
+  left: 49%;
+  opacity: 90%;
+
 }
+.loadingForSpinner {
+  position: absolute;
+  top: 40%;
+  left: 49%;
+  width: 0;
+  height: 0;
+  opacity: 70%;
+  background: #b6b9ba;
+  border-radius: 100%;
+  border-style: solid;
+  border-width: 20px;
+  border-top-color: rgb(30, 141, 140);
+  border-right-color: transparent;
+  border-bottom-color: rgb(30, 141, 140);
+  border-left-color: transparent;
+
+}
+

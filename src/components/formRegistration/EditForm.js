@@ -6,6 +6,7 @@ import Finish from "./Finish";
 import Steps from "./Steps";
 import RespAfterEdit from "./RespAfterEdit";
 import UserService from "../../services/UserService";
+import MySpinner from "../spinner/MySpinner";
 
 export default class EditForm extends React.Component {
     constructor() {
@@ -19,6 +20,7 @@ export default class EditForm extends React.Component {
                 lastname: userFromStorage.lastname,
                 password: "",
                 repeatPassword: "",
+                loader: false,
                 address: {
                     country: userFromStorage.address.country,
                     city: userFromStorage.address.city
@@ -48,17 +50,27 @@ export default class EditForm extends React.Component {
     onSubmit = (event) => {
         event.preventDefault();
         if (this.state.agree) {
-            const {editUser} = UserService();
-            editUser(this.state).then(value => {this.setState({response: "Success! User has been edited!"})
-            localStorage.setItem('user', JSON.stringify(value.data));
-            console.log("Success!!! resp from server", value.data)
+            try {
+                this.setState({loader: true})
+                const {editUser} = UserService();
+                editUser(this.state).then(value => {
+                        this.setState({response: "Success! User has been edited!"})
+                        localStorage.setItem('user', JSON.stringify(value.data));
+                        console.log("Success!!! resp from server", value.data)
+                    }
+                ).then(value => {
+                        this.setState({step: 4})
+                        this.setState({doneStep: 0})
+                        console.log("Success!!! Edited", this.state)
+                    }
+                );
+            }catch (e){
+                console.log(e)
+            }finally {
+                setTimeout(()=>{
+                    this.setState({loader: false})
+                },)
             }
-            ).then(value => {
-                    this.setState({step: 4})
-                    this.setState({doneStep: 0})
-                    console.log("Success!!! Edited", this.state)
-                }
-            );
         }
     }
 
@@ -199,6 +211,7 @@ export default class EditForm extends React.Component {
                     </div>
                 :
             <div className="MyContainer">
+                {this.state.loader? MySpinner: <div></div>}
                 <div className="pagination">
                     <button type="button"
                             className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}

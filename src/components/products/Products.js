@@ -4,6 +4,7 @@ import Product from "../product/Product";
 import axios from "axios";
 import './trans.css'
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import MySpinner from "../spinner/MySpinner";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -71,7 +72,7 @@ export default function Products() {
             } finally {
                 setTimeout(() => {
                     setIsLoadingInside(false);
-                },)
+                })
             }
         }
     }
@@ -169,13 +170,9 @@ export default function Products() {
         console.log(' effect fetch product')
         fetchProducts();
     }, [])
-    const renderLoadingIndicator = () => {
-        return <div className="loading">
-            Loading...
-        </div>;
-    };
+
     return (
-        isLoading ? renderLoadingIndicator() :
+        isLoading ? MySpinner:
             <div className={styles.container}>
                 <div className={styles.addProdCont}>
                     <form className="form card-body">
@@ -213,15 +210,26 @@ export default function Products() {
                                        setAmount(e.target.value)
                                    }}
                             />
+                            <TransitionGroup>
+
                             {!AddOrEdit ?
                                 <div className={styles.buttonAdd}>
                                     <button className={styles.navLink} onClick={addProduct}>Add</button>
-                                </div> :
+                                </div>
+                                   :
+                                <CSSTransition
+                                    in={AddOrEdit}
+                                    timeout={500}
+                                    classNames="example"
+                                >
                                 <section className={styles.buttonAdd2}>
                                     <button className={styles.navLinkCancel} onClick={cancel}>Cancel</button>
                                     <button className={styles.navLink} onClick={editProd}>Edit</button>
                                 </section>
+                                </CSSTransition>
                             }
+                            </TransitionGroup>
+                            {isLoadingInside? MySpinner: <div></div> }
                         </div>
                     </form>
 

@@ -14,13 +14,31 @@
 }
 .addProdCont{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     text-align: center;
     align-self: center;
+    margin-left: 35%;
     /*background: #e22626;*/
-    width: 300px;
+    width: 63%;
     margin-bottom: 20px;
+}
+.googleMaps{
+    width: 60%;
+    /*background: #4d9290;*/
+}
+.coord{
+    color: #0e9d93;
+    font-size: 16px;
+}
+.coord:hover{
+    color: #858591;
+    /*text-decoration: none;*/
+    font-size: 16px;
+}
+.contForm{
+    width: 300px;
+    /*background: white;*/
 }
 .buttonAdd{
     justify-content: end;
