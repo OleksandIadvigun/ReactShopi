@@ -108,7 +108,7 @@ const Basic = props => {
 
             </fieldset>
 
-            <div className="form-group">
+            <div className="form-group my">
                 <div>
                     <label>Age</label>
                 </div>
@@ -122,7 +122,7 @@ const Basic = props => {
                     </button>
                     <input
                         type="number"
-                        className="form-control"
+                        className="form-control  my"
                         placeholder="Enter age"
                         name="age"
                         value={age}

@@ -12,12 +12,13 @@
 
 }
 .loadingForSpinner {
+  z-index: 100;
   position: absolute;
   top: 40%;
   left: 49%;
   width: 0;
   height: 0;
-  opacity: 70%;
+  opacity: 90%;
   background: #b6b9ba;
   border-radius: 100%;
   border-style: solid;

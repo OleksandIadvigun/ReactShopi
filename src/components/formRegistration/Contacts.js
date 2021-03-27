@@ -66,7 +66,7 @@ const Contacts = props => {
                 />
 
                 <label>Select country</label>
-                <select className="form-control" aria-label="Default select example"
+                <select className="form-control my" aria-label="Default select example"
                         id="country"
                         value={country}
                         name="country"
@@ -77,7 +77,7 @@ const Contacts = props => {
                 </select>
                 <br/>
                 <label>Select city</label>
-                <select className="form-control" aria-label="Default select example"
+                <select className="form-control my" aria-label="Default select example"
                         id="city"
                         value={city}
                         name="city"

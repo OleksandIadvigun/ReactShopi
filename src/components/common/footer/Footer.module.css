@@ -24,6 +24,12 @@
     margin-bottom: 10px;
     width: 30%;
 }
+@media(max-device-width: 678px) {
+    .footerInfoLeft, .footerInfoCenter,
+    .footerInfoRight,.footerInfoName, .footerInfoEmail, .footerInfoNumber{
+        font-size: 12px;
+    }
+}
 
 .footerInfoName, .footerInfoEmail, .footerInfoNumber {
     margin-bottom: 5px;
@@ -71,6 +77,11 @@
     text-decoration: none;
     margin-top: 5px;
     color: rgb(36, 171, 233);
+}
+@media(max-device-width: 678px) {
+    .linked{
+        font-size: 22px;
+    }
 }
 .linked:hover{
     color: rgb(162, 205, 212);

@@ -93,6 +93,12 @@
     /*border: white;*/
 
 }
+@media(max-device-width: 678px) {
+    .navLinkClose {
+        padding: 0.2rem 0.7rem 0.2rem 0.7rem;
+        font-size: 22px;
+    }
+}
 
 .navLinkClose:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/

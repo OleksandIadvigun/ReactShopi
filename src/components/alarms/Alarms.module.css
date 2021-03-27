@@ -12,6 +12,12 @@
     transition-property: opacity;
     transition-duration: 1s;
 }
+@media(max-device-width: 678px) {
+    .container {
+        width: 100%;
+        font-size: 20px;
+    }
+}
 .addProdCont{
     display: flex;
     flex-direction: column;

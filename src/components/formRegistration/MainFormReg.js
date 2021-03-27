@@ -12,59 +12,62 @@ import MySpinner from "../spinner/MySpinner";
 export default class MainFormReg extends React.Component {
     constructor() {
         super();
-            this.state = {
-                username: "",
-                firstname: "",
-                lastname: "",
-                password: "",
-                repeatPassword: "",
-                loader: false,
-                address: {
-                    country: "",
-                    city: ""
-                },
-                sex: "male",
-                agree: false,
-                logo: null,
-                age: 16,
-                step: 1,
-                doneStep: 0,
-                email: '',
-                mobile: '',
-                response: '',
-                errors: {
-                    username: false,
-                    firstname: false,
-                    lastname: false,
-                    password: false,
-                    repeatPassword: false,
-                    age: false,
-                    email: false,
-                    mobile: false
+        this.state = {
+            username: "",
+            firstname: "",
+            lastname: "",
+            password: "",
+            repeatPassword: "",
+            loader: false,
+            address: {
+                country: "",
+                city: ""
+            },
+            sex: "male",
+            agree: false,
+            logo: null,
+            age: 16,
+            step: 1,
+            doneStep: 0,
+            email: '',
+            mobile: '',
+            response: '',
+            errors: {
+                username: false,
+                firstname: false,
+                lastname: false,
+                password: false,
+                repeatPassword: false,
+                age: false,
+                email: false,
+                mobile: false
 
-                }
-            };
-        }
+            }
+        };
+    }
 
 
     onSubmit = (event) => {
         event.preventDefault();
         if (this.state.agree) {
             try {
-                this.setState({loader:true});
+                this.setState({loader: true});
                 const {sendNewUser} = RegisterService();
-                sendNewUser(this.state).then(value => this.setState({response: value.data})).then(value => {
-                        this.setState({step: 4})
-                        this.setState({doneStep: 0})
+                sendNewUser(this.state).then(value => {
+                        if (value.data != null) {
+                            this.setState({response: value.data})
+                            this.setState({loader: false});
+                            this.setState({step: 4})
+                            this.setState({doneStep: 0})
+                        } else {
+                            this.setState({loader: false});
+                            this.setState({response: "No response from server"})
+                        }
                     }
                 );
                 console.log("Success!!! Added to DB", this.state)
-            }catch (e){
+            } catch (e) {
                 console.log(e)
-            }finally {
-                setTimeout(()=>{
-                    this.setState({loader:false});
-                },)
             }
         }
     }
@@ -196,15 +199,18 @@ export default class MainFormReg extends React.Component {
                     email: this.state.email
                 }
                 checkLoginAndEmail(data).then(value => {
-                    console.log("checkong log.." + data.username , data.email)
-                    if (value.data.toString().includes('Username') || value.data.toString().includes('Email') ) {
-                        console.log("val:",value.data.toString(), "dataVal")
+                    console.log("checkong log.." + data.username, data.email)
+                    if (value.data.toString().includes('Username') || value.data.toString().includes('Email')) {
+                        console.log("val:", value.data.toString(), "dataVal")
                         // this.setState({response: value.data})
-                        this.setState({errors: {email: "Email is already exist!",
-                                                     username: "Username is already exist!"}})
+                        this.setState({
+                            errors: {
+                                email: "Email is already exist!",
+                                username: "Username is already exist!"
+                            }
+                        })
 
-                    }
-                    else {
+                    } else {
                         console.log("next")
                         this.setState({doneStep: this.state.doneStep + 1})
                         this.setState({step: this.state.step + 1})
@@ -232,75 +238,75 @@ export default class MainFormReg extends React.Component {
                     />
                 </div>
                 :
-                    <div className="MyContainer">
-                        {this.state.loader? MySpinner: <div></div>}
-                        <div className="pagination">
+                <div className="MyContainer">
+                    {this.state.loader ? MySpinner : <div></div>}
+                    <div className="pagination">
                         <button type="button"
                                 className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
                                 onClick={this.prevPage}
                         >
                         </button>
-                        </div>
-                <div className={this.state.step < 4 ? "form-container card" : " empty"}>
-                    <Steps step={this.state.step} doneStep={this.state.doneStep}/>
-                    <form className="form card-body">
-                        {this.state.step === 1 && (
-                            <Basic
-                                username={this.state.username}
-                                firstname={this.state.firstname}
-                                lastname={this.state.lastname}
-                                password={this.state.password}
-                                repeatPassword={this.state.repeatPassword}
-                                onChange={this.onChange}
-                                errors={this.state.errors}
-                                gender={this.state.sex}
-                                age={this.state.age}
-                                decrementAge={this.decrementAge}
-                                incrementAge={this.incrementAge}
-                                response={this.state.response}
+                    </div>
+                    <div className={this.state.step < 4 ? "form-container card" : " empty"}>
+                        <Steps step={this.state.step} doneStep={this.state.doneStep}/>
+                        <form className="form card-body">
+                            {this.state.step === 1 && (
+                                <Basic
+                                    username={this.state.username}
+                                    firstname={this.state.firstname}
+                                    lastname={this.state.lastname}
+                                    password={this.state.password}
+                                    repeatPassword={this.state.repeatPassword}
+                                    onChange={this.onChange}
+                                    errors={this.state.errors}
+                                    gender={this.state.sex}
+                                    age={this.state.age}
+                                    decrementAge={this.decrementAge}
+                                    incrementAge={this.incrementAge}
+                                    response={this.state.response}
 
-                            />)}
-                        {this.state.step === 2 && (
-                            <Contacts
-                                country={this.state.address.country}
-                                onChange={this.onChange}
-                                onSelect={this.onSelectCountry}
-                                getOptions={this.getOptions}
-                                city={this.state.address.city}
-                                mobile={this.state.mobile}
-                                errors={this.state.errors}
-                                email={this.state.email}
-                                response={this.state.response}
+                                />)}
+                            {this.state.step === 2 && (
+                                <Contacts
+                                    country={this.state.address.country}
+                                    onChange={this.onChange}
+                                    onSelect={this.onSelectCountry}
+                                    getOptions={this.getOptions}
+                                    city={this.state.address.city}
+                                    mobile={this.state.mobile}
+                                    errors={this.state.errors}
+                                    email={this.state.email}
+                                    response={this.state.response}
 
-                            />
-                        )}
-                        {this.state.step === 3 && (
-                            <Finish
-                                onChange={this.onChange}
-                                avatar={this.state.logo}
-                                name={this.state.username}
-                                firstname={this.state.firstname}
-                                lastname={this.state.lastname}
-                                age={this.state.age}
-                                email={this.state.email}
-                                mobile={this.state.mobile}
-                                country={this.state.address.country}
-                                city={this.state.address.city}
-                                agree={this.state.agree}
-                                onSubmit={this.onSubmit}
-                                edit={false}
-                            />
-                        )}
-                    </form>
+                                />
+                            )}
+                            {this.state.step === 3 && (
+                                <Finish
+                                    onChange={this.onChange}
+                                    avatar={this.state.logo}
+                                    name={this.state.username}
+                                    firstname={this.state.firstname}
+                                    lastname={this.state.lastname}
+                                    age={this.state.age}
+                                    email={this.state.email}
+                                    mobile={this.state.mobile}
+                                    country={this.state.address.country}
+                                    city={this.state.address.city}
+                                    agree={this.state.agree}
+                                    onSubmit={this.onSubmit}
+                                    edit={false}
+                                />
+                            )}
+                        </form>
+                    </div>
+                    <div className="pagination">
+                        <button type="button" id="id-w"
+                                className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
+                                onClick={this.nextPage}
+                        >
+                        </button>
+                    </div>
                 </div>
-                        <div className="pagination">
-                            <button type="button" id="id-w"
-                                    className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
-                                    onClick={this.nextPage}
-                            >
-                            </button>
-                        </div>
-            </div>
 
         );
     }

@@ -49,6 +49,11 @@
     border: white;
 
 }
+@media(max-device-width: 678px) {
+    .navLinkEdit {
+        font-size: 22px;
+    }
+}
 
 .navLinkEdit:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
@@ -80,6 +85,11 @@
     border-radius: 3px;
     /*border: white;*/
 
+}
+@media(max-device-width: 678px) {
+    .navLinkClose {
+        font-size: 22px;
+    }
 }
 
 .navLinkClose:hover{

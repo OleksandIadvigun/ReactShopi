@@ -1,17 +1,15 @@
 import styles from './HomeShopi.module.css';
 import {TextContent} from "./TextContent";
+import {useEffect, useState} from "react";
 
 
 export const  HomeShopi =()=>{
-
-
-
   return (
     <div>
         <div className={styles.welcomeText}>Welcome to <span className={styles.shopi}>SHOPI</span></div>
         <div className={styles.title}>What is SHOPI?</div>
         <div className={styles.mainContainer}>
-            <div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + "/photos/7ph.png"}/></div>
+            <div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + `/photos/7ph.png`}/></div>
             <div className={styles.text}><TextContent/>
                 <div className={styles.title2}>Functions:</div>
                 <ul>

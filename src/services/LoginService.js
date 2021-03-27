@@ -1,3 +1,5 @@
+import axios from "axios";
+
 
 export default function LoginService() {
   return {
@@ -15,6 +17,9 @@ export default function LoginService() {
     },
     deleteUserFromLocalStorage: () => {
       return localStorage.removeItem('user');
+    },
+    resetPassword: (data) => {
+      return axios.post('http://localhost:8080/forgotPassword', data);
     }
   }
 }

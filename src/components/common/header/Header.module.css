@@ -1,9 +1,18 @@
 
 .headerTop{
     display: flex;
-    width: 100%;
+    max-width: 100%;
     height: 72px;
-    /*background-color: #333333;*/
+    background-color: #dda7a7;
+    justify-content: space-between;
+}
+@media(max-device-width: 678px) {
+    .headerTop {
+        background-color: #d4bd02;
+        justify-content: space-between;
+        height: 102px;
+
+    }
 }
 .headerTopLogo{
     display: flex;
@@ -13,6 +22,12 @@
     margin-right: 10px;
     margin-left: 10px;
 
+}
+@media(max-device-width: 678px) {
+    .headerTopLogo {
+        margin-top: 20px;
+
+    }
 }
 
 .headerTopNavbar{

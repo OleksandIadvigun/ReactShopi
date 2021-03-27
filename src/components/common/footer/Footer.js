@@ -3,7 +3,7 @@ import styles from './Footer.module.css'
 
 export default function Footer() {
   return (
-    <div>
+    <div >
             <section className={styles.footerSocialMedia}>
                 <a href="https://www.linkedin.com/in/oleksandriadvigun/" target="_blank" rel="linked" className={styles.linked} >LinkedIn</a>
             </section>

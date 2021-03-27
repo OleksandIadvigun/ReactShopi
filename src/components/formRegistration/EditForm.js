@@ -54,22 +54,18 @@ export default class EditForm extends React.Component {
                 this.setState({loader: true})
                 const {editUser} = UserService();
                 editUser(this.state).then(value => {
-                        this.setState({response: "Success! User has been edited!"})
-                        localStorage.setItem('user', JSON.stringify(value.data));
-                        console.log("Success!!! resp from server", value.data)
-                    }
-                ).then(value => {
-                        this.setState({step: 4})
-                        this.setState({doneStep: 0})
-                        console.log("Success!!! Edited", this.state)
+                        if (value.data != null) {
+                            localStorage.setItem('user', JSON.stringify(value.data));
+                            this.setState({step: 4})
+                            this.setState({doneStep: 0})
+                            this.setState({loader: false})
+                        } else {
+                            this.setState({loader: false})
+                        }
                     }
                 );
-            }catch (e){
+            } catch (e) {
                 console.log(e)
-            }finally {
-                setTimeout(()=>{
-                    this.setState({loader: false})
-                },)
             }
         }
     }
@@ -202,83 +198,83 @@ export default class EditForm extends React.Component {
     }
 
     render() {
-
+        const message = 'Success! The user has been edited.';
         return (
             this.state.step === 4 ?
-                    <div className="response" >
-                        <RespAfterEdit data={this.state.response}
-                        />
-                    </div>
+                <div className="response">
+                    <RespAfterEdit data={this.state.response} message={message}
+                    />
+                </div>
                 :
-            <div className="MyContainer">
-                {this.state.loader? MySpinner: <div></div>}
-                <div className="pagination">
-                    <button type="button"
-                            className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
-                            onClick={this.prevPage}
-                    >
-                    </button>
-                </div>
-                <div className={this.state.step < 4 ? "form-container card" : " empty"}>
-                    <Steps step={this.state.step} doneStep={this.state.doneStep}/>
-                    <form className="form card-body">
-                        {this.state.step === 1 && (
-                            <Basic
-                                username={this.state.username}
-                                firstname={this.state.firstname}
-                                lastname={this.state.lastname}
-                                password={this.state.password}
-                                repeatPassword={this.state.repeatPassword}
-                                onChange={this.onChange}
-                                errors={this.state.errors}
-                                gender={this.state.sex}
-                                age={this.state.age}
-                                decrementAge={this.decrementAge}
-                                incrementAge={this.incrementAge}
-                                response={this.state.response}
+                <div className="MyContainer">
+                    {this.state.loader ? MySpinner : <div></div>}
+                    <div className="pagination">
+                        <button type="button"
+                                className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
+                                onClick={this.prevPage}
+                        >
+                        </button>
+                    </div>
+                    <div className={this.state.step < 4 ? "form-container card" : " empty"}>
+                        <Steps step={this.state.step} doneStep={this.state.doneStep}/>
+                        <form className="form card-body">
+                            {this.state.step === 1 && (
+                                <Basic
+                                    username={this.state.username}
+                                    firstname={this.state.firstname}
+                                    lastname={this.state.lastname}
+                                    password={this.state.password}
+                                    repeatPassword={this.state.repeatPassword}
+                                    onChange={this.onChange}
+                                    errors={this.state.errors}
+                                    gender={this.state.sex}
+                                    age={this.state.age}
+                                    decrementAge={this.decrementAge}
+                                    incrementAge={this.incrementAge}
+                                    response={this.state.response}
 
-                            />)}
-                        {this.state.step === 2 && (
-                            <Contacts
-                                country={this.state.address.country}
-                                onChange={this.onChange}
-                                onSelect={this.onSelectCountry}
-                                getOptions={this.getOptions}
-                                city={this.state.address.city}
-                                mobile={this.state.mobile}
-                                errors={this.state.errors}
-                                email={this.state.email}
-                                response={this.state.response}
+                                />)}
+                            {this.state.step === 2 && (
+                                <Contacts
+                                    country={this.state.address.country}
+                                    onChange={this.onChange}
+                                    onSelect={this.onSelectCountry}
+                                    getOptions={this.getOptions}
+                                    city={this.state.address.city}
+                                    mobile={this.state.mobile}
+                                    errors={this.state.errors}
+                                    email={this.state.email}
+                                    response={this.state.response}
 
-                            />
-                        )}
-                        {this.state.step === 3 && (
-                            <Finish
-                                onChange={this.onChange}
-                                avatar={this.state.logo}
-                                name={this.state.username}
-                                firstname={this.state.firstname}
-                                lastname={this.state.lastname}
-                                age={this.state.age}
-                                email={this.state.email}
-                                mobile={this.state.mobile}
-                                country={this.state.address.country}
-                                city={this.state.address.city}
-                                agree={this.state.agree}
-                                onSubmit={this.onSubmit}
-                                edit={true}
-                            />
-                        )}
-                    </form>
+                                />
+                            )}
+                            {this.state.step === 3 && (
+                                <Finish
+                                    onChange={this.onChange}
+                                    avatar={this.state.logo}
+                                    name={this.state.username}
+                                    firstname={this.state.firstname}
+                                    lastname={this.state.lastname}
+                                    age={this.state.age}
+                                    email={this.state.email}
+                                    mobile={this.state.mobile}
+                                    country={this.state.address.country}
+                                    city={this.state.address.city}
+                                    agree={this.state.agree}
+                                    onSubmit={this.onSubmit}
+                                    edit={true}
+                                />
+                            )}
+                        </form>
+                    </div>
+                    <div className="pagination">
+                        <button type="button" id="id-w"
+                                className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
+                                onClick={this.nextPage}
+                        >
+                        </button>
+                    </div>
                 </div>
-                <div className="pagination">
-                    <button type="button" id="id-w"
-                            className={` ${this.state.doneStep === 2 ? 'navLinkNextClicked' : 'navLinkNext'} `}
-                            onClick={this.nextPage}
-                    >
-                    </button>
-                </div>
-            </div>
         );
     }
 }

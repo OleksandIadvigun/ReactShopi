@@ -21,24 +21,19 @@ export default function Alarms() {
     })
 
     const fetchAlarms = async () => {
-        console.log(' function fetch product')
         if (localStorage.getItem('token')) {
             try {
                 setIsLoading(true)
-                //const results = await getProducts();
                 await AXIOS.get('alarms').then(results => {
-                    console.log(results.data + "data");
-                    setProducts(results.data);
-                    results.data.map(value => {
-                        console.log(value.id + " id " + value.name + " name")
-                    })
+                   if(results.data!=null) {
+                       setProducts(results.data);
+                       setIsLoading(false);
+                   }else{
+                       setIsLoading(false);
+                   }
                 })
             } catch (e) {
                 console.error(e);
-            } finally {
-                setTimeout(() => {
-                    setIsLoading(false);
-                })
             }
         }
     }
@@ -56,31 +51,28 @@ export default function Alarms() {
         try {
             setIsLoadingInside(true)
             const newProducts = [...products];
-            console.log(data.id + " my data")
             AXIOS.put('alarms/done', data).then(res => {
-                console.log(res.data.id + " editedProdFromResp");
-                newProducts.forEach((e, index) => {
-                    if (e.id === res.data.id) {
-                        newProducts.splice(index, 1);
-                    }
-                })
-            }).then(r => {
-                setProducts(newProducts);
-                setExpiration('');
+               if(res.data!=null) {
+                   newProducts.forEach((e, index) => {
+                       if (e.id === res.data.id) {
+                           newProducts.splice(index, 1);
+                       }
+                   })
+                   setProducts(newProducts);
+                   setExpiration('');
+                   setIsLoadingInside(false);
+               }else{
+                   setIsLoadingInside(false);
+               }
             });
         } catch (e) {
             console.error(e)
-        } finally {
-            setTimeout(() => {
-                setIsLoadingInside(false);
-            },)
         }
     }
 
 
     useEffect(() => {
-        console.log("effect deleting...")
-        console.log(idForDone, "id for del")// todo? render with component
+        console.log("effect deleting...")// todo? render with component
         if (idForDone > 0 && expiration > 0) {
             console.log("Inside done")
             doneFunc().then(res => res);

@@ -25,7 +25,7 @@
     margin-right: 1px;
 }
 .navLinkEdit {
-    margin-top: 6px;
+    margin-top: 10px;
     text-decoration: none;
     padding: 0rem 1.1rem 0rem 1.1rem;
     /*background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);*/
@@ -35,6 +35,11 @@
     border-radius: 4px;
     border: white;
 
+}
+@media(max-device-width: 678px) {
+    .navLinkEdit {
+        font-size: 22px;
+    }
 }
 
 .navLinkEdit:hover{
@@ -47,7 +52,10 @@
 
 }
 .contButtons{
+    display: flex;
+    flex-direction: column;
     text-align: right;
+    justify-content: space-between;
     position: relative;
     margin-bottom: 0;
     padding: 2px;
@@ -55,6 +63,7 @@
 }
 .navLinkClose {
     text-decoration: none;
+    align-self: flex-end;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
     background: linear-gradient(90deg, rgb(126, 122, 122) 0%, rgb(47, 45, 45) 100%);
     /*color: lightgoldenrodyellow;*/
@@ -63,6 +72,11 @@
     border-radius: 3px;
     /*border: white;*/
 
+}
+@media(max-device-width: 678px) {
+    .navLinkClose {
+        font-size: 22px;
+    }
 }
 
 .navLinkClose:hover{

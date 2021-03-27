@@ -12,22 +12,38 @@
     transition-property: opacity;
     transition-duration: 1s;
 }
+@media(max-device-width: 678px) {
+    .container {
+        width: 100%;
+        font-size: 20px;
+    }
+}
 .addProdCont{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
     align-self: center;
-    /*background: #e22626;*/
     width: 300px;
     margin-bottom: 20px;
 }
+@media(max-device-width: 678px) {
+    .addProdCont {
+        width: 500px;
+    }
+}
+
 .buttonAdd{
     justify-content: end;
     text-align: end;
     /*background: #2cc3d9;*/
     align-content: end;
     margin-top: 20px;
+}
+@media(max-device-width: 678px) {
+    .buttonAdd {
+        font-size: 22px;
+    }
 }
 
 .navLink {
@@ -58,6 +74,12 @@
     /*align-content: end;*/
     margin-top: 20px;
 }
+@media(max-device-width: 678px) {
+    .buttonAdd2{
+        font-size: 22px;
+    }
+}
+
 .navLinkCancel {
     text-decoration: none;
     padding: 0.2rem 0.9rem 0.2rem 0.9rem;
@@ -67,6 +89,11 @@
     margin-left: 1%;
     transition: all 0.2s ease-out;
     border-radius: 4px;
+}
+@media(max-device-width: 678px) {
+    .navLinkCancel {
+        font-size: 22px;
+    }
 }
 
 .navLinkCancel:hover{

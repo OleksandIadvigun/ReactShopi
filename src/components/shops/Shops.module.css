@@ -12,6 +12,12 @@
     transition-property: opacity;
     transition-duration: 1s;
 }
+@media(max-device-width: 678px) {
+    .container {
+        width: 100%;
+        font-size: 20px;
+    }
+}
 .addProdCont{
     display: flex;
     flex-direction: row;
@@ -23,13 +29,31 @@
     width: 63%;
     margin-bottom: 20px;
 }
+@media(max-device-width: 678px) {
+    .addProdCont {
+        width: 500px;
+        flex-direction: column;
+        margin-left: 1px;
+    }
+}
 .googleMaps{
     width: 60%;
     /*background: #4d9290;*/
 }
+@media(max-device-width: 678px) {
+    .googleMaps {
+        width: 100%;
+        /*background: #4d9290;*/
+    }
+}
 .coord{
     color: #0e9d93;
     font-size: 16px;
+}
+@media(max-device-width: 678px) {
+    .coord {
+        font-size: 22px;
+    }
 }
 .coord:hover{
     color: #858591;
@@ -39,6 +63,12 @@
 .contForm{
     width: 300px;
     /*background: white;*/
+}
+@media(max-device-width: 678px) {
+    .contForm {
+        width: 500px;
+        /*background: #d67777;*/
+    }
 }
 .buttonAdd{
     justify-content: end;
@@ -57,6 +87,11 @@
     transition: all 0.2s ease-out;
     border-radius: 4px;
 }
+@media(max-device-width: 678px) {
+    .navLink {
+       font-size: 22px;
+    }
+}
 
 .navLink:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
@@ -67,6 +102,11 @@
     text-decoration: none;
     margin-right: 2px;
 
+}
+@media(max-device-width: 678px) {
+    .navLink:hover {
+        font-size: 22px;
+    }
 }
 .buttonAdd2{
     display: flex;
@@ -86,7 +126,11 @@
     transition: all 0.2s ease-out;
     border-radius: 4px;
 }
-
+@media(max-device-width: 678px) {
+    .navLinkCancel {
+        font-size: 22px;
+    }
+}
 .navLinkCancel:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
     background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);

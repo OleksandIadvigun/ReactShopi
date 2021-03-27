@@ -12,6 +12,7 @@ export default function UserInfo() {
                     USER DETAILS
                 </p>
                 <div className="userDetail">
+                    <section className="flexOne">
                     <div className="ti">username: {user.username}</div>
                     <div className="ti">firstname: {user.firstname}</div>
                     <div className="ti">lastname: {user.lastname}</div>
@@ -20,6 +21,7 @@ export default function UserInfo() {
                     <div className="ti">counry: {user.address.country}</div>
                     <div className="ti">city: {user.address.city}</div>
                     <div className="ti">email: {user.email}</div>
+                </section>
                 </div>
                 <br/>
                 <Link to={'/editUser'} className="navLink"> Edit</Link>

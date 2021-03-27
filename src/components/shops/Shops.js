@@ -8,7 +8,6 @@ import MyGoogleMap from "../googleMap/MyGoogleMap";
 import MySpinner from "../spinner/MySpinner";
 
 
-
 export default function Shops() {
     const [shops, setShops] = useState([]);
     const [isLoading, setIsLoading] = useState(null);
@@ -29,61 +28,56 @@ export default function Shops() {
     })
 
     const fetchShops = async () => {
-        console.log(' function fetch shops')
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             try {
                 setIsLoading(true)
                 //const results = await getProducts();
                 await AXIOS.get('shops').then(results => {
-                    console.log(results.data + "shops");
-                    setShops(results.data);
-                    results.data.map(value => {
-                        console.log(value.id + " id " + value.name + " name")
-                    })
+                    if (results.data != null) {
+                        console.log(results.data + "shops");
+                        setShops(results.data);
+                        setIsLoading(false);
+                    } else {
+                        setIsLoading(false);
+                    }
                 })
             } catch (e) {
                 console.error(e);
-            } finally {
-                setTimeout(() => {
-                    setIsLoading(false);
-                },)
             }
         }
     }
 
     const addProduct = async (e) => {
         e.preventDefault();
-        console.log(' effect add shop')
         const data = {
             name: name,
             latitude: latitude,
             longitude: longitude,
             areaSize: areaSize
         }
-        if(localStorage.getItem('token')) {
+        if (localStorage.getItem('token')) {
             try {
                 setIsLoadingInside(true);
                 await AXIOS.post('shops', data).then((results => {
-                    console.log(results.data.id + "post res from add");
-                    setShops(prev => new Array(1).fill(results.data).concat(prev));
-                })).then(v => {
-                    setName('');
-                    setLatitude('');
-                    setLongitude('');
-                    setSize('')
-                })
+                    if (results.data != null) {
+                        setShops(prev => new Array(1).fill(results.data).concat(prev));
+                        setName('');
+                        setLatitude('');
+                        setLongitude('');
+                        setSize('')
+                        setIsLoadingInside(false);
+                    } else {
+                        setIsLoadingInside(false);
+                    }
+                }))
 
             } catch (e) {
                 console.log(e + ' exception');
-            } finally {
-                setTimeout(() => {
-                    setIsLoadingInside(false);
-                })
             }
         }
     }
 
-    const cancel = (e)=>{
+    const cancel = (e) => {
         e.preventDefault();
         setName('');
         setLatitude('');
@@ -114,64 +108,62 @@ export default function Shops() {
         try {
             setIsLoadingInside(true)
             const newShops = [...shops];
-            console.log(data.id + " my data")
             AXIOS.put('shops/edit', data).then(res => {
-                console.log(res.data.id + " editedShopsFromResp");
-                newShops.forEach((e, index) => {
-                    if (e.id === res.data.id) {
-                        newShops[index] = res.data;
-                    }
-                })
-            }).then(r => {
-                setShops(newShops);
-                setName('');
-                setLatitude('');
-                setLongitude('');
-                setSize('');
-                setAddOrEdit(false)
+                if (res.data != null) {
+                    newShops.forEach((e, index) => {
+                        if (e.id === res.data.id) {
+                            newShops[index] = res.data;
+                        }
+                    })
+                    setShops(newShops);
+                    setName('');
+                    setLatitude('');
+                    setLongitude('');
+                    setSize('');
+                    setIsLoadingInside(false);
+                    setAddOrEdit(false)
+                } else {
+                    setIsLoadingInside(false);
+                }
             });
         } catch (e) {
             console.error(e)
-        } finally {
-            setTimeout(() => {
-                setIsLoadingInside(false);
-            })
         }
     }
+
     const del = (item) => {
-        console.log("In del const" + item.id + " item id")
         setIdForDel(item.id);
     }
 
     const deleteShop = async () => {
-        console.log(idForDel + " deletedProd")
         const newShops = [...shops];
         try {
             setIsLoadingInside(true)
             const data = {
                 id: idForDel
             }
-            await AXIOS.delete('shops/delete', {data: data}).then((resp) =>
-                newShops.forEach((e, index) => {
-                    if (e.id === idForDel) {
-                        newShops.splice(index, 1);
+            await AXIOS.delete('shops/delete', {data: data}).then(resp => {
+                    if (resp.data != null) {
+                        newShops.forEach((e, index) => {
+                            if (e.id === idForDel) {
+                                newShops.splice(index, 1);
+                            }
+                        })
+                        setShops(newShops);
+                        setIsLoadingInside(false);
+                    } else {
+                        setIsLoadingInside(false);
                     }
-                })
-            ).then(() => setShops(newShops))
+                }
+            );
         } catch (e) {
             console.error(e);
-        } finally {
-            setTimeout(() => {
-                setIsLoadingInside(false);
-            })
         }
     }
 
     useEffect(() => {
-        console.log("effect deleting...")
-        console.log(idForDel ,"id for del")// todo? render with component
+        console.log("effect deleting...") // todo? render with component
         if (idForDel > 0) {
-            console.log("Inside delete")
             deleteShop().then(res => res);
         }
     }, [idForDel]);
@@ -187,93 +179,97 @@ export default function Shops() {
             <div className={styles.container}>
                 <div className={styles.addProdCont}>
                     <div className={styles.contForm}>
-                    <form className="form card-body">
-                        <div className="form-group">
-                            <label htmlFor='name'>New shop</label>
-                            <input className="form-control my"
-                                   id='name'
-                                   type='text'
-                                   placeholder="Input name"
-                                   name="name"
-                                   value={name}
-                                   onChange={(e) => {
-                                       setName(e.target.value)
-                                   }}
-                            />
-                            <br/>
-                            <input className="form-control my"
-                                   id='latitude'
-                                   type='number'
-                                   placeholder="Input latitude"
-                                   name="latitude"
-                                   value={latitude}
-                                   onChange={(e) => {
-                                       setLatitude(e.target.value)
-                                   }}
-                            />
-                            <br/>
-                            <input className="form-control my"
-                                   id='longitude'
-                                   type='number'
-                                   placeholder="Input longitude"
-                                   name="longitude"
-                                   value={longitude}
-                                   onChange={(e) => {
-                                       setLongitude(e.target.value)
-                                   }}
-                            />
-                            <br/>
-                            <input className="form-control my"
-                                   id='areaSize'
-                                   type='number'
-                                   placeholder="Input areaSize"
-                                   name="areaSize"
-                                   value={areaSize}
-                                   onChange={(e) => {
-                                       setSize(e.target.value)
-                                   }}
-                            />
-                            <TransitionGroup>
-                                {isLoadingInside? MySpinner: <div></div> }
-                            {!AddOrEdit ?
-                                <div className={styles.buttonAdd}>
-                                    <button className={styles.navLink} onClick={addProduct}>Add</button>
-                                </div>:
-                                <CSSTransition
-                                    in={AddOrEdit}
-                                    timeout={500}
-                                    classNames="example"
-                                >
-                                <div className={styles.buttonAdd2}> <button className={styles.navLinkCancel} onClick={cancel}>Cancel</button>
-                                    <button className={styles.navLink} onClick={editProd}>Edit</button></div>
-                                </CSSTransition>
-                            }</TransitionGroup>
-                        </div>
-                    </form>
+                        <form className="form card-body">
+                            <div className="form-group">
+                                <label htmlFor='name'>New shop</label>
+                                <input className="form-control my"
+                                       id='name'
+                                       type='text'
+                                       placeholder="Input name"
+                                       name="name"
+                                       value={name}
+                                       onChange={(e) => {
+                                           setName(e.target.value)
+                                       }}
+                                />
+                                <br/>
+                                <input className="form-control my"
+                                       id='latitude'
+                                       type='number'
+                                       placeholder="Input latitude"
+                                       name="latitude"
+                                       value={latitude}
+                                       onChange={(e) => {
+                                           setLatitude(e.target.value)
+                                       }}
+                                />
+                                <br/>
+                                <input className="form-control my"
+                                       id='longitude'
+                                       type='number'
+                                       placeholder="Input longitude"
+                                       name="longitude"
+                                       value={longitude}
+                                       onChange={(e) => {
+                                           setLongitude(e.target.value)
+                                       }}
+                                />
+                                <br/>
+                                <input className="form-control my"
+                                       id='areaSize'
+                                       type='number'
+                                       placeholder="Input areaSize"
+                                       name="areaSize"
+                                       value={areaSize}
+                                       onChange={(e) => {
+                                           setSize(e.target.value)
+                                       }}
+                                />
+                                <TransitionGroup>
+                                    {isLoadingInside ? MySpinner : <div></div>}
+                                    {!AddOrEdit ?
+                                        <div className={styles.buttonAdd}>
+                                            <button className={styles.navLink} onClick={addProduct}>Add</button>
+                                        </div> :
+                                        <CSSTransition
+                                            in={AddOrEdit}
+                                            timeout={500}
+                                            classNames="example"
+                                        >
+                                            <div className={styles.buttonAdd2}>
+                                                <button className={styles.navLinkCancel} onClick={cancel}>Cancel
+                                                </button>
+                                                <button className={styles.navLink} onClick={editProd}>Edit</button>
+                                            </div>
+                                        </CSSTransition>
+                                    }</TransitionGroup>
+                            </div>
+                        </form>
                     </div>
                     <div className={styles.googleMaps}>
                         {/*<MyGoogleMap/>*/}
-                        <a href='https://www.latlong.net/' target="_blank" rel="linked" className={styles.coord}>Get coordinates</a>
-                        </div>
+                        <a href='https://www.latlong.net/' target="_blank" rel="linked" className={styles.coord}>Get
+                            coordinates</a>
+                    </div>
                 </div>
                 <div>
                     <TransitionGroup>
-                    {
-                        shops.map((item,index) =>
-                            <CSSTransition
-                                key={item.id}
-                                timeout={500}
-                                classNames="example"
-                            >
-                            <Shop item={item}
-                                  edit={edit}
-                                  del={del}
-                                  key={item.id}
-                                  index={index}
-                        />
-                            </CSSTransition>
-                        )
-                    }
+                        {
+                            shops.map((item, index) =>
+                                <CSSTransition
+                                    key={item.id}
+                                    timeout={500}
+                                    classNames="example"
+                                >
+                                    <Shop item={item}
+                                          edit={edit}
+                                          del={del}
+                                          key={item.id}
+                                          index={index}
+                                    />
+                                </CSSTransition>
+                            )
+                        }
                     </TransitionGroup>
                 </div>
             </div>

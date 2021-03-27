@@ -20,7 +20,7 @@ const Field = props => {
             <input
                 id={id}
                 type={type}
-                className={ error ? "form-control is-invalid "  : "form-control my ff "  }
+                className={ error ? "form-control is-invalid my"  : "form-control my ff "  }
                 placeholder={placeholder}
                 name={name}
                 value={value}

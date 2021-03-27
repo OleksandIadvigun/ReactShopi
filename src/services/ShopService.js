@@ -1,4 +1,4 @@
-import {AXIOS} from "./Axios.config";
+import AXIOS from "./Axios.config";
 
 
 export default function ShopService() {
