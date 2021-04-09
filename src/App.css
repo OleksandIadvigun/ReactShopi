@@ -1,32 +1,68 @@
 .App {
-  min-height: 100%;
-  text-align: center;
-  /*background: #e3dcdc*/
+    min-height: 100%;
+    text-align: center;
+    /*background: #e3dcdc*/
 
 }
+
 .loading {
-  position: absolute;
-  top: 40%;
-  left: 49%;
-  opacity: 90%;
+    position: absolute;
+    top: 40%;
+    left: 49%;
+    opacity: 90%;
 
 }
-.loadingForSpinner {
-  z-index: 100;
-  position: absolute;
-  top: 40%;
-  left: 49%;
-  width: 0;
-  height: 0;
-  opacity: 90%;
-  background: #b6b9ba;
-  border-radius: 100%;
-  border-style: solid;
-  border-width: 20px;
-  border-top-color: rgb(30, 141, 140);
-  border-right-color: transparent;
-  border-bottom-color: rgb(30, 141, 140);
-  border-left-color: transparent;
 
+.loadingForSpinner {
+    z-index: 100;
+    position: absolute;
+    top: 40%;
+    left: 49%;
+    width: 0;
+    height: 0;
+    opacity: 90%;
+    background: #b6b9ba;
+    border-radius: 100%;
+    border-style: solid;
+    border-width: 20px;
+    border-top-color: rgb(30, 141, 140);
+    border-right-color: transparent;
+    border-bottom-color: rgb(30, 141, 140);
+    border-left-color: transparent;
+
+}
+
+.example2 {
+    position: absolute;
+}
+
+.example2-enter-active {
+    animation: fadeIN 1s forwards;
+}
+
+.example2-exit-active {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIN {
+    0%{
+        opacity: 0;
+        transform: translateX(-1000px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(1000px);
+    }
 }
 

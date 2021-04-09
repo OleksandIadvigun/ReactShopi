@@ -1,112 +1,194 @@
+
 .mainContainer {
     display: flex;
+    position: relative;
     justify-content: flex-start;
-    padding-top: 8px;
     /*background: #b51818;*/
+    /*margin-bottom: 6%;*/
     border-radius: 8px;
-    margin-bottom: 80px;
+    padding: 13px;
     transition-property: opacity;
-    transition-duration: 3s;
+    transition-duration: 2s;
+    z-index: 20;
+    height: 82vh;
 }
-@media(max-device-width: 678px) {
+
+/*.videoWrapper {*/
+/*    display: none;*/
+/*}*/
+@media (max-device-width: 678px) {
     .mainContainer {
         /*background: #b51818;*/
+        flex: 1 1 auto;
+        width: 100%;
         flex-direction: column;
+        height: 2350px;
+    }
+
+    .videoWrapper {
+        display: none;
     }
 }
 
+/*.videoWrapper{*/
+/*    display: none;*/
+/*}*/
 .phonePhoto {
     display: flex;
     justify-content: center;
-    flex: 0 0 auto ;
-    height: 100%;
+    flex: 0 0 auto;
+    height: 50%;
     /*background-color: #8c6d29;*/
     border-radius: 8px;
 
 }
-@media(max-device-width: 678px) {
-    .phonePhoto {
-        /*background: #b51818;*/
-        height: 700px;
-    }
+img{
+    height: 70vh;
 }
 
+@media (max-device-width: 678px) {
+    .phonePhoto {
+        /*background: #b51818;*/
+        height: 70vh;
+    }
+    img{
+        height: 70vh;
+    }
+}
+@media (max-device-width: 1210px) {
+    .phonePhoto {
+        /*background: #b51818;*/
+        height: 50vh;
+    }
+    img{
+        height: 50vh;
+    }
+}
 .text {
-    font-size: 16px;
+    font-size: 1.85vh;
     line-height: 2;
+    height: 68vh;
     /*letter-spacing: 0.3px;*/
-    color: #282c34;
-    padding: 15px 15px 15px 30px ;
+    color: #8f9396;
+    padding: 15px 15px 15px 30px;
     position: center;
     text-align: left;
     justify-content: center;
     /*background-color: white;*/
     border-radius: 5px;
 }
-@media(max-device-width: 678px) {
+@media (max-device-width: 1280px) {
     .text {
-        font-size: 22px;
+        font-size: 1.8vw;
+    }
+}
+@media (max-device-width: 678px) {
+    .text {
+        font-size: 19px;
     }
 }
 
-.welcomeText {
-    margin-top: 10px;
+.startButton {
+    position: relative;
+    margin-right: 5%;
+    text-align: end;
     color: #6d726d;
-    font-size: 22px;
-    font-weight: bold;
-    margin-bottom: 5px;
+    height: 5vh;
+    font-size: 19px;
+    z-index: 2;
+    /*background: #2a88c6;*/
 }
-/*.shopi{*/
-/*    color: #CD5C5C ;*/
-/*}*/
+
+.shopi {
+    color: #CD5C5C;
+    border: 1px solid;
+    padding: 4px;
+}
+
+.shopi:hover {
+    color: #6d726d;
+    text-decoration: none;
+
+}
 
 .title {
-    color: #088f69;
+    position: relative;
+    color: #6d726d;
+    height: 4.3vh;
     font-size: 20px;
     margin-bottom: 5px;
+    z-index: 2;
+    /*background: #61dafb;*/
 }
+
 .title2 {
     position: relative;
     justify-content: center;
+    margin-right: 320px;
     text-align: center;
-    color: #454540;
+    color: #9d9d10;
     font-size: 20px;
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.href{
-    margin-right: 5px ;
+
+@media (max-device-width: 678px) {
+    .title2 {
+        margin-right: 0px;
+    }
+}
+
+.href {
+    margin-right: 5px;
     font-size: 18px;
     text-decoration: none;
-    border-radius: 4px;
+    /*border-radius: 1px;*/
     color: #2cc3d9;
-    background: #53534e;
+    /*background: #53534e;*/
+    border: 1px solid #53534e;
     padding: 5px 8px;
     margin-top: 50px;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .href {
         font-size: 24px;
+
     }
 }
-.href:hover{
-    background: #858583;
-    color: #e7ecee;
+
+.href:hover {
+    /*background: #e0e0d9;*/
+    /*opacity: 90%;*/
+    color: #53534e;
     text-decoration: none;
 }
-.download{
+
+.download {
     margin-top: 40px;
     margin-bottom: 20px;
 }
 
-.li{
+.li {
     margin-bottom: 15px;
 }
+
 img {
     max-width: 100%;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     img {
         max-width: 120%;
     }
+}
+.videoWrapper{
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }

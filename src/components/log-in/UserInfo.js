@@ -1,5 +1,7 @@
 import LoginService from "../../services/LoginService";
 import {Link} from "react-router-dom";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
+import React from "react";
 
 export default function UserInfo() {
     const {getUserFromLocalStorage} = LoginService();
@@ -24,8 +26,9 @@ export default function UserInfo() {
                 </section>
                 </div>
                 <br/>
-                <Link to={'/editUser'} className="navLink"> Edit</Link>
+                <Link to={'/editUser'} className="editButton"> Edit</Link>
             </div>
+
         </div>
     );
 }

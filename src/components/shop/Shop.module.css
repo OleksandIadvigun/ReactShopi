@@ -1,9 +1,9 @@
-.containerP{
+.containerP {
     background: linear-gradient(90deg, #727272 0%, #333333 100%);
     display: flex;
     /*padding: 15px;*/
     border-radius: 5px;
-    border: 1px solid #727272 ;
+    border: 1px solid #727272;
     /*border: 1px solid brown;*/
     justify-content: space-between;
     text-align: start;
@@ -11,31 +11,47 @@
     transition: all 0.2s ease-out;
 }
 
-.item{
+.item {
     position: relative;
     color: #2cc3d9;
     width: 20%;
-    text-align: start;
+    text-align: center;
     margin: 15px;
     padding-left: 5px;
     /*border: 1px solid white;*/
 }
-.itemNumber{
+.itemNumber {
     position: relative;
     color: #2cc3d9;
     width: 5%;
     text-align: center;
     margin: 15px;
     padding: 5px;
-    border-radius: 100%;
-    /*border: 1px solid white;*/
+
 }
-.containerP:hover{
+@media (max-device-width: 678px) {
+    .item {
+        margin: 1px;
+        min-width: 18%;
+        align-self: center;
+    }
+
+    .itemNumber {
+        margin: 1px;
+        padding: 1px;
+        align-self: center;
+    }
+}
+
+
+
+.containerP:hover {
     transition: all 0.2s ease-out;
-    border: 1px solid #2cc3d9 ;
+    border: 1px solid #2cc3d9;
     margin-left: 5px;
     margin-right: 1px;
 }
+
 .navLinkEdit {
     margin-top: 6px;
     text-decoration: none;
@@ -49,13 +65,14 @@
     border: white;
 
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .navLinkEdit {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 
-.navLinkEdit:hover{
+.navLinkEdit:hover {
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
     background: linear-gradient(90deg, rgb(182, 190, 189) 0%, rgb(71, 78, 83) 100%);
     border-radius: 4px;
@@ -64,7 +81,8 @@
     text-decoration: none;
 
 }
-.contButtons{
+
+.contButtons {
     display: flex;
     flex-direction: column;
     text-align: right;
@@ -74,6 +92,7 @@
     padding: 2px;
     /*background: #0ca0b8;*/
 }
+
 .navLinkClose {
     text-decoration: none;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
@@ -86,13 +105,14 @@
     /*border: white;*/
 
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .navLinkClose {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 
-.navLinkClose:hover{
+.navLinkClose:hover {
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
     background: linear-gradient(90deg, rgb(200, 61, 89) 0%, rgb(160, 4, 4) 100%);
     border-radius: 4px;

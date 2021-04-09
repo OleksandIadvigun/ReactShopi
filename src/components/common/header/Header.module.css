@@ -2,22 +2,24 @@
 .headerTop{
     display: flex;
     max-width: 100%;
-    height: 72px;
-    background-color: #dda7a7;
+    height: 8vh;
+    /*background-color: #dda7a7;*/
+    align-items: center;
     justify-content: space-between;
 }
 @media(max-device-width: 678px) {
     .headerTop {
-        background-color: #d4bd02;
+        /*background-color: #d4bd02;*/
         justify-content: space-between;
-        height: 102px;
-
+        width: 100vw;
+        /*height: 102px;*/
     }
 }
 .headerTopLogo{
     display: flex;
     justify-content: center;
     padding: 5px;
+    height: 8vh;
     align-items: center;
     margin-right: 10px;
     margin-left: 10px;
@@ -30,23 +32,24 @@
     }
 }
 
-.headerTopNavbar{
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    background-color: darkgreen;
-}
-.headerTopNavigation{
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin-right: 55px;
-    background-color: red;
-}
+/*.headerTopNavbar{*/
+/*    display: flex;*/
+/*    flex: 1;*/
+/*    flex-direction: column;*/
+/*    background-color: darkgreen;*/
+/*}*/
+/*.headerTopNavigation{*/
+/*    display: flex;*/
+/*    flex: 1;*/
+/*    flex-direction: row;*/
+/*    justify-content: flex-end;*/
+/*    margin-right: 55px;*/
+/*    background-color: red;*/
+/*}*/
 
 .headerLogo{
     color: inherit;
+    height: 8vh;
     text-decoration: inherit;
     font-size: 100px;
 }

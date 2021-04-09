@@ -6,6 +6,7 @@ import {Redirect} from "react-router";
 import LoginService from "../../services/LoginService";
 import MySpinner from "../spinner/MySpinner";
 import RespAfterEdit from "../formRegistration/RespAfterEdit";
+import SpinnerInside from "../spinner/SpinnerInside";
 
 class LogIn extends Component {
 
@@ -229,7 +230,7 @@ class LogIn extends Component {
                             }
 
 
-                            {this.state.loader ? MySpinner : <div></div>}
+                            {this.state.loader ? SpinnerInside : <div></div>}
                             {this.state.forgot ?
                                 <div className="containerButtons">
                                     <div className="back" onClick={() => {

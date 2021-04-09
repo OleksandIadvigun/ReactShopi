@@ -17,6 +17,51 @@
     text-align: start;
     margin: 15px;
     padding-left: 5%;
+
+}
+.itemNumber {
+    position: relative;
+    color: #2cc3d9;
+    width: 5%;
+    text-align: start;
+    margin: 15px;
+    padding-left: 1%;
+
+}
+@media(max-device-width: 678px) {
+    .containerP{
+        display: flex;
+        /*flex-direction: column;*/
+    }
+    .itemNumber{
+        margin: 2px;
+        padding: 1px;
+        width: 5%;
+        /*border: 1px solid white;*/
+        align-self: center;
+    }
+    .item{
+        width: 30%;
+        height: fit-content;
+        padding: 1px;
+        margin: 2px;
+        align-self: center;
+    }
+    .itemDateExp{
+        width: 30%;
+        padding: 1px;
+        margin: 2px;
+        /*border: 1px solid white;*/
+        align-self: center;
+
+
+    }
+    .itemExpiration{
+        display: none;
+    }
+    .itemAmount{
+        display: none;
+    }
 }
 .containerP:hover{
     transition: all 0.2s ease-out;
@@ -38,7 +83,7 @@
 }
 @media(max-device-width: 678px) {
     .navLinkEdit {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 
@@ -75,7 +120,7 @@
 }
 @media(max-device-width: 678px) {
     .navLinkClose {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 

@@ -1,4 +1,4 @@
-import defAvat from "../../data/defAvat.png";
+import defAvat from "../../data/avatarwhite.png";
 import React from "react";
 import countries from "../../data/countries";
 

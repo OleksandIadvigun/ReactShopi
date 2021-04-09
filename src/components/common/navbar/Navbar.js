@@ -17,8 +17,8 @@ export const Navbar = ({unSetUser}) => {
 
     const [activeStep, setMenuClick] = useState(0);
     const [loggedUser, setLogged] = useState(false);
+    const [burger, setBurger] = useState(false);
     useEffect(() => {
-        // console.log("active step effect used")
     }, [activeStep])
     useEffect(() => {
         if(localStorage.getItem('user')){
@@ -28,21 +28,23 @@ export const Navbar = ({unSetUser}) => {
     }, [loggedUser])
     const {deleteUserFromLocalStorage,deleteTokenFromLocalStorage} = LoginService();
     return (
-        <div>
-            <ContexLoggedUser.Consumer>
-                {value=>{if(value){
-                    // console.log("Set Status true in Nav Bar")
-                    setLogged(true)
-                }}}
-            </ContexLoggedUser.Consumer>
-            <div className={styles.navbarItems}>
-                <ul className={styles.navBarActive}>
+            <div className={styles.navbarItems} >
+                <ContexLoggedUser.Consumer>
+                    {value=>{if(value){
+                        setLogged(true)
+                    }}}
+                </ContexLoggedUser.Consumer>
+
+                <ul className={burger? styles.navBarActive: styles.navBarClosed } >
+                    <div className={burger? styles.navLinkClose: styles.disabled} onClick={()=>{
+                        setBurger(false);
+                    }}>X</div>
                     <Link to="/" className={activeStep === 1 ? styles.navLinkClicked : styles.navLink
-                    // && loggedUser ? styles.disabled : styles.navLink
                     }
                           onClick={() => {
                               console.log("IN clicked...")
                               setMenuClick(1)
+                              setBurger(false);
                           }}>Home</Link>
                     <Link to="/alarms" className={activeStep === 2 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
@@ -50,6 +52,7 @@ export const Navbar = ({unSetUser}) => {
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(2)
+                           setBurger(false);
                        }}>Alarms</Link>
                     <Link to="/products" className={activeStep === 3 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
@@ -57,6 +60,7 @@ export const Navbar = ({unSetUser}) => {
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(3)
+                           setBurger(false);
                        }}>Products</Link>
                     <Link to="/shops" className={activeStep === 4 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
@@ -64,6 +68,7 @@ export const Navbar = ({unSetUser}) => {
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(4)
+                           setBurger(false);
                        }}>Shops</Link>
                     <Link to="/login" className={ loggedUser ? styles.disabled : styles.navLink &&
 
@@ -72,6 +77,7 @@ export const Navbar = ({unSetUser}) => {
                        onClick={() => {
                            console.log("IN clicked...")
                            setMenuClick(5)
+                           setBurger(false);
                        }}>Log in</Link>
                     <Link to="/login" className={activeStep === 6 ? styles.navLinkClicked : styles.navLink &&
                     !loggedUser ? styles.disabled : styles.navLink
@@ -83,31 +89,38 @@ export const Navbar = ({unSetUser}) => {
                            unSetUser();
                            setMenuClick(5)
                            setLogged(false);
+                           setBurger(false);
                            // console.log(JSON.parse(localStorage.getItem('user')) , " user From LOCAL")
 
 
 
-                       }}>Log out</Link>
+                       }}>Logout</Link>
                     <Link to="/registration" className={activeStep === 7 ? styles.navLinkClicked : styles.navLink &&
                     loggedUser ? styles.disabled : styles.navLink
                     }
                           onClick={() => {
                               console.log("IN clicked...")
                               setMenuClick(7)
+                              setBurger(false);
                           }}
 
                     >Sing up</Link>
+                    {loggedUser?
+                        <MyContext.Consumer>
+                            {value => {if(value){
+                                // console.log(value + "VALUEEEEEE")
+                                return <Link to={'loggedIn'} className={styles.navLink} onClick={()=>{
+                                    setMenuClick(0)
+                                    setBurger(false);}
+                                }>{value}</Link>}}}
+                        </MyContext.Consumer>
+                        :""}
                 </ul>
-                {loggedUser?
-                    <MyContext.Consumer>
-                        {value => {if(value){
-                            // console.log(value + "VALUEEEEEE")
-                            return <Link to={'loggedIn'} className={styles.username} onClick={()=>{
-                                setMenuClick(0)}
-                            }>{value}</Link>}}}
-                    </MyContext.Consumer>
-                    :""}
-            </div>
-        </div>
+                    <div className={!burger? styles.menuBtn: styles.menuBtnClosed} onClick={()=>{
+                        setBurger(!burger);
+                    }}>
+                    <span></span>
+                    </div>
+         </div>
     );
 }

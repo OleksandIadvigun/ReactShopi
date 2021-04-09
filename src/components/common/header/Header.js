@@ -15,7 +15,7 @@ export default function  Header({unSetUser}) {
         return (
             <div>
                 <section className={styles.headerTop}>
-                    <img className={styles.headerTopLogo} src={process.env.PUBLIC_URL + "/photos/log6.png"}
+                    <img className={styles.headerTopLogo} src={process.env.PUBLIC_URL + "/photos/spinner.png"}
                          height="70px"/>
                     <Navbar  unSetUser={unSetUser}/>
                 </section>

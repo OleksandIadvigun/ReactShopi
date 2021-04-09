@@ -10,9 +10,9 @@ export default function Alarm({item, done,index}) {
         <div className={styles.containerP}>
             <span className={styles.itemNumber}> {index+1} </span>
             <span className={styles.item}> {item.name} </span>
-            <span className={styles.item}> amount: {item.amount}</span>
+            <span className={styles.itemAmount}> amount: {item.amount}</span>
             <span className={styles.itemDateExp}> expired on: {item.overdueDate}</span>
-            <span className={styles.item}> expiration: {item.expiration} day(s)</span>
+            <span className={styles.itemExpiration}> expiration: {item.expiration} day(s)</span>
             <div className={styles.contButtons}>
                 <button className={styles.navLinkClose} onClick={doneHandler} >V</button>
             </div>

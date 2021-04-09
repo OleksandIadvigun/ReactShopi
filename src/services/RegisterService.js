@@ -7,7 +7,7 @@ export default function RegisterService() {
             return axios.post('http://localhost:8080/registration', data);
         },
         checkLoginAndEmail: (data) => {
-            return axios.post('http://localhost:8080/checkloginAndEmail', data);
+            return axios.post('http://localhost:8080/checkLoginAndEmail', data);
         }
     }
 }

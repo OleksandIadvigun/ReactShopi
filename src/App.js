@@ -10,7 +10,7 @@ import {
     Switch,
     Route,
     Link,
-    withRouter
+    withRouter, BrowserRouter, NavLink
 } from 'react-router-dom';
 import Products from "./components/products/Products";
 import Shops from "./components/shops/Shops";
@@ -21,6 +21,7 @@ import MyContext from "./MyContext";
 import ContexLoggedUser from "./ContexLoggedUser";
 import EditForm from "./components/formRegistration/EditForm";
 import Alarms from "./components/alarms/Alarms";
+import {CSSTransition} from "react-transition-group";
 
 export default class App extends React.Component {
     username = JSON.parse(localStorage.getItem('user'))?.username
@@ -40,12 +41,13 @@ export default class App extends React.Component {
     }
 
 render()
+
 {
     return (
+
         <MyContext.Provider value={this.state.logIn}>
             <ContexLoggedUser.Provider value={this.state.status}>
                 <Router>
-                    {/*<div className="App">*/}
                         <BaseLayout unSetUser={this.unSetUserName}>
                             <Switch>
                                 <Route path={'/'} exact={true} render={() => <HomeShopi/>}/>
@@ -59,7 +61,6 @@ render()
                                 <Route path={'/editUser'} render={() => <EditForm />}/>
                             </Switch>
                         </BaseLayout>
-                    {/*</div>*/}
                 </Router>
             </ContexLoggedUser.Provider>
         </MyContext.Provider>

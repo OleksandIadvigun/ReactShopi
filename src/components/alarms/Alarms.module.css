@@ -8,14 +8,16 @@
     align-self: center;
     /*background: #b5b5b5;*/
     width: 80%;
+    min-height: 82vh;
     margin-bottom: 100px;
     transition-property: opacity;
-    transition-duration: 1s;
+    transition-duration: 2s;
 }
 @media(max-device-width: 678px) {
     .container {
         width: 100%;
-        font-size: 20px;
+        font-size: 14px;
+        margin-bottom: 50px;
     }
 }
 .addProdCont{

@@ -8,6 +8,7 @@ import Steps from "./Steps";
 import RegisterService from "../../services/RegisterService";
 import ResponseAfterReg from "./ResponseAfterReg";
 import MySpinner from "../spinner/MySpinner";
+import SpinnerInside from "../spinner/SpinnerInside";
 
 export default class MainFormReg extends React.Component {
     constructor() {
@@ -239,7 +240,7 @@ export default class MainFormReg extends React.Component {
                 </div>
                 :
                 <div className="MyContainer">
-                    {this.state.loader ? MySpinner : <div></div>}
+                    {this.state.loader ? SpinnerInside : <div></div>}
                     <div className="pagination">
                         <button type="button"
                                 className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}

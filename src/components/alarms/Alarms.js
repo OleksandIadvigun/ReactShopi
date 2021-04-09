@@ -5,10 +5,12 @@ import Product from "../product/Product";
 import Alarm from "../alarm/Alarm";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import MySpinner from "../spinner/MySpinner";
+import '../products/trans.css';
+import SpinnerInside from "../spinner/SpinnerInside";
 
 export default function Alarms() {
     const [products, setProducts] = useState([]);
-    const [isLoading, setIsLoading] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const [isLoadingInside, setIsLoadingInside] = useState(null);
     const [expiration, setExpiration] = useState('');
     const [idForDone, setIdForDone] = useState(0);
@@ -88,13 +90,13 @@ export default function Alarms() {
         isLoading ? MySpinner :
             <div className={styles.container}>
                 <div>
-                    {isLoadingInside? MySpinner: <div></div> }
+                    {isLoadingInside? SpinnerInside: <div></div> }
                     <TransitionGroup>
                         {
                             products.map((item, index) =>
                                 <CSSTransition
                                     key={item.id}
-                                    timeout={500}
+                                    timeout={1000}
                                     classNames="example"
                                 >
                                     <Alarm item={item}

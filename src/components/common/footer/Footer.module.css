@@ -15,10 +15,11 @@
 .footerInfo  {
     display: flex;
     justify-content: center;
+   /*background: #181717;*/
 }
 
 .footerInfoLeft, .footerInfoCenter, .footerInfoRight {
-    font-size: xx-small;
+    font-size: x-small;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -43,11 +44,23 @@
     text-align: center;
 }
 
-.footerInfoNumber, .footerInfoContact {
+.footerInfoNumber  {
     text-align: end;
     margin-bottom: 5px;
-}
 
+}
+.footerInfoContact{
+    text-align: end;
+    margin-bottom: 5px;
+    border-radius: 1px;
+    border: 1px solid;
+    padding: 4px 10px;
+    align-self: flex-end;
+}
+.footerInfoContact:hover{
+    color: #dbd8d8;
+    cursor: pointer;
+}
 .footerDate {
     display: flex;
     flex-direction: row;

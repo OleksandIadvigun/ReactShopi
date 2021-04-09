@@ -5,6 +5,7 @@ import axios from "axios";
 import './trans.css'
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 import MySpinner from "../spinner/MySpinner";
+import SpinnerInside from "../spinner/SpinnerInside";
 
 export default function Products() {
     const [products, setProducts] = useState([]);
@@ -12,7 +13,9 @@ export default function Products() {
     const [isLoadingInside, setIsLoadingInside] = useState(null);
     const [name, setName] = useState('');
     const [expiration, setExpiration] = useState('');
+    const [ErrorExpiration, setErrorExpiration] = useState('');
     const [amount, setAmount] = useState('');
+    const [ErrorAmount, setErrorAmount] = useState('');
     const [id, setId] = useState(null);
     const [idForDel, setIdForDel] = useState(0);
     const [AddOrEdit, setAddOrEdit] = useState(false);
@@ -43,16 +46,24 @@ export default function Products() {
             }
         }
     }
-
+    const validateAmount =()=>{
+        return amount < 1000000 && amount > 0;
+    }
+    const validateExpiration =()=>{
+        return expiration < 365 && expiration > 0;
+    }
     const addProduct = async (e) => {
         e.preventDefault();
+        setErrorAmount('');
+        setErrorExpiration('');
         console.log(' effect add product')
         const data = {
             name: name,
             expiration: expiration,
             amount: amount
         }
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token') && validateAmount() && validateExpiration()) {
+
             try {
                 setIsLoadingInside(true);
                 await AXIOS.post('products', data).then((results => {
@@ -69,6 +80,12 @@ export default function Products() {
                 })
             } catch (e) {
                 console.log(e + ' exception');
+            }
+        }else{
+            if(!validateExpiration()){
+                setErrorExpiration('Must be from 1 to 365 days!')
+            }if(!validateAmount()){
+                setErrorAmount('Must be from 1 to 1000000!')
             }
         }
     }
@@ -92,12 +109,16 @@ export default function Products() {
 
     const editProd = async (e) => {
         e.preventDefault();
+        setErrorExpiration('');
+        setErrorAmount('');
         const data = {
             name: name,
             expiration: expiration,
             amount: amount,
             id: id
         }
+        if (localStorage.getItem('token') && validateAmount() && validateExpiration()) {
+
         try {
             setIsLoadingInside(true)
             const newProducts = [...products];
@@ -121,6 +142,14 @@ export default function Products() {
             })
         } catch (e) {
             console.error(e)
+        }
+    }
+    else{
+            if(!validateExpiration()){
+                setErrorExpiration('Must be from 1 to 365 days!')
+            }if(!validateAmount()){
+                setErrorAmount('Must be from 1 to 1000000!')
+            }
         }
     }
     const del = (item) => {
@@ -193,6 +222,9 @@ export default function Products() {
                                        setExpiration(e.target.value)
                                    }}
                             />
+                            {ErrorExpiration ? <div className="error">{ErrorExpiration}
+                                </div>
+                                : null}
                             <br/>
                             <input className="form-control my"
                                    id='amount'
@@ -204,6 +236,9 @@ export default function Products() {
                                        setAmount(e.target.value)
                                    }}
                             />
+                            {ErrorAmount ? <div className="error">{ErrorAmount}
+                                </div>
+                                : null}
                             <TransitionGroup>
 
                                 {!AddOrEdit ?
@@ -213,7 +248,7 @@ export default function Products() {
                                     :
                                     <CSSTransition
                                         in={AddOrEdit}
-                                        timeout={500}
+                                        timeout={1000}
                                         classNames="example"
                                     >
                                         <section className={styles.buttonAdd2}>
@@ -223,7 +258,7 @@ export default function Products() {
                                     </CSSTransition>
                                 }
                             </TransitionGroup>
-                            {isLoadingInside ? MySpinner : <div></div>}
+                            {isLoadingInside ? SpinnerInside : <div></div>}
                         </div>
                     </form>
 

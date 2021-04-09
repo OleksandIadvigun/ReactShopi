@@ -17,7 +17,7 @@ export default function Product({item,edit, del,index}) {
     }
   return (
     <div className={styles.containerP}>
-        <span className={styles.item}> {index+1} </span>
+        <span className={styles.itemNumber}> {index+1} </span>
         <span className={styles.item}> {item.name} </span>
         <span className={styles.item}> amount: {item.amount}</span>
         <span className={styles.item}> expiration: {item.expiration} day(s)</span>

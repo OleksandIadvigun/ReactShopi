@@ -6,6 +6,7 @@ import {CSSTransition, TransitionGroup} from "react-transition-group";
 import '../products/trans.css';
 import MyGoogleMap from "../googleMap/MyGoogleMap";
 import MySpinner from "../spinner/MySpinner";
+import SpinnerInside from "../spinner/SpinnerInside";
 
 
 export default function Shops() {
@@ -16,6 +17,7 @@ export default function Shops() {
     const [latitude, setLatitude] = useState('');
     const [longitude, setLongitude] = useState('');
     const [areaSize, setSize] = useState('');
+    const [ErrorAreaSize, setErrorSize] = useState('');
     const [id, setId] = useState(null);
     const [idForDel, setIdForDel] = useState(0);
     const [AddOrEdit, setAddOrEdit] = useState(false);
@@ -46,6 +48,9 @@ export default function Shops() {
             }
         }
     }
+    const validateAreaSize = () => {
+        return areaSize < 10000 && areaSize > 0;
+    }
 
     const addProduct = async (e) => {
         e.preventDefault();
@@ -55,7 +60,8 @@ export default function Shops() {
             longitude: longitude,
             areaSize: areaSize
         }
-        if (localStorage.getItem('token')) {
+        if (localStorage.getItem('token') && validateAreaSize()) {
+            setErrorSize('');
             try {
                 setIsLoadingInside(true);
                 await AXIOS.post('shops', data).then((results => {
@@ -74,6 +80,8 @@ export default function Shops() {
             } catch (e) {
                 console.log(e + ' exception');
             }
+        }else{
+            setErrorSize("Must be from 1 to 10000!")
         }
     }
 
@@ -105,29 +113,34 @@ export default function Shops() {
             areaSize: areaSize,
             id: id
         }
-        try {
-            setIsLoadingInside(true)
-            const newShops = [...shops];
-            AXIOS.put('shops/edit', data).then(res => {
-                if (res.data != null) {
-                    newShops.forEach((e, index) => {
-                        if (e.id === res.data.id) {
-                            newShops[index] = res.data;
-                        }
-                    })
-                    setShops(newShops);
-                    setName('');
-                    setLatitude('');
-                    setLongitude('');
-                    setSize('');
-                    setIsLoadingInside(false);
-                    setAddOrEdit(false)
-                } else {
-                    setIsLoadingInside(false);
-                }
-            });
-        } catch (e) {
-            console.error(e)
+        if (localStorage.getItem('token') && validateAreaSize()) {
+            setErrorSize('');
+            try {
+                setIsLoadingInside(true)
+                const newShops = [...shops];
+                AXIOS.put('shops/edit', data).then(res => {
+                    if (res.data != null) {
+                        newShops.forEach((e, index) => {
+                            if (e.id === res.data.id) {
+                                newShops[index] = res.data;
+                            }
+                        })
+                        setShops(newShops);
+                        setName('');
+                        setLatitude('');
+                        setLongitude('');
+                        setSize('');
+                        setIsLoadingInside(false);
+                        setAddOrEdit(false)
+                    } else {
+                        setIsLoadingInside(false);
+                    }
+                });
+            } catch (e) {
+                console.error(e)
+            }
+        }else{
+            setErrorSize("Must be from 1 to 10000!")
         }
     }
 
@@ -177,6 +190,11 @@ export default function Shops() {
     return (
         isLoading ? MySpinner :
             <div className={styles.container}>
+                <div className={styles.googleMaps}>
+                    {/*<MyGoogleMap/>*/}
+                    <a href='https://www.latlong.net/' target="_blank" rel="linked" className={styles.coord}>Get
+                        coordinates</a>
+                </div>
                 <div className={styles.addProdCont}>
                     <div className={styles.contForm}>
                         <form className="form card-body">
@@ -218,22 +236,26 @@ export default function Shops() {
                                 <input className="form-control my"
                                        id='areaSize'
                                        type='number'
-                                       placeholder="Input areaSize"
+                                       placeholder="Input area size"
                                        name="areaSize"
                                        value={areaSize}
                                        onChange={(e) => {
                                            setSize(e.target.value)
                                        }}
                                 />
+                                {ErrorAreaSize ? <div className="error">{ErrorAreaSize}
+                                    </div>
+                                    : null}
+
                                 <TransitionGroup>
-                                    {isLoadingInside ? MySpinner : <div></div>}
+                                    {isLoadingInside ? SpinnerInside : <div></div>}
                                     {!AddOrEdit ?
                                         <div className={styles.buttonAdd}>
                                             <button className={styles.navLink} onClick={addProduct}>Add</button>
                                         </div> :
                                         <CSSTransition
                                             in={AddOrEdit}
-                                            timeout={500}
+                                            timeout={1000}
                                             classNames="example"
                                         >
                                             <div className={styles.buttonAdd2}>
@@ -246,11 +268,7 @@ export default function Shops() {
                             </div>
                         </form>
                     </div>
-                    <div className={styles.googleMaps}>
-                        {/*<MyGoogleMap/>*/}
-                        <a href='https://www.latlong.net/' target="_blank" rel="linked" className={styles.coord}>Get
-                            coordinates</a>
-                    </div>
+
                 </div>
                 <div>
                     <TransitionGroup>

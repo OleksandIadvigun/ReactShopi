@@ -2,25 +2,31 @@
 .M {
     display: flex;
     flex-direction: column;
-    width: 500px;
-    height: 400px;
     justify-content: center;
     align-self: center;
     border-radius: 5px;
+    min-height: 91vh;
+    min-width: 37vh;
+    transition-property: opacity;
+    transition-duration: 2s;
     /*border: 1px solid #baa1a1;*/
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .M {
-      /*background: #b5b5b5;*/
-        width: 670px;
+        /*background: #b5b5b5;*/
+        width: 95vw;
+        margin-bottom: 50px;
     }
 }
-.center{
+
+.center {
     /*background: beige;*/
     justify-self: center;
 
 }
-.responseLog{
+
+.responseLog {
     /*margin-top: 15%;*/
     /*position: relative;*/
     padding: 3%;
@@ -33,108 +39,139 @@
     border-radius: 50px;
 }
 
-.error{
+.error {
     display: block;
     color: red;
     font-size: 12px;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .error {
         font-size: 19px;
     }
 }
 
-.containerForgotPass{
+.containerForgotPass {
     display: flex;
     justify-content: flex-end;
 }
-.containerButtons{
+
+.containerButtons {
     display: flex;
     /*justify-content: flex-start;*/
     /*background: beige;*/
 }
-.forgotPass{
- margin-right: 10px;
+
+.forgotPass {
+    margin-right: 10px;
     color: #0f99de;
     font-size: 17px;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .forgotPass {
-        font-size: 20px;
+        font-size: 18px;
     }
 }
 
-.forgotPass:hover{
+.forgotPass:hover {
     margin-right: 10px;
     color: #5ccaf3;
     font-size: 17px;
     cursor: pointer;
 
 }
-.titlePassword{
+
+.titlePassword {
     font-size: 22px;
     color: #858583;
 }
-@media(max-device-width: 678px) {
-    .titlePassword{
+
+@media (max-device-width: 678px) {
+    .titlePassword {
         font-size: 26px;
     }
 }
 
-.userDetail{
+.userDetail {
     display: flex;
     justify-content: center;
     align-content: center;
     line-height: 2;
-    font-size: 17px;
+    color: #8f9396;
+    padding: 5px;
+    font-size: 18px;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .userDetail {
-        font-size: 24px;
+        font-size: 17px;
+        width: 95vw;
     }
 }
-.flexOne{
- display: flex;
+
+.flexOne {
+    display: flex;
     flex-direction: column;
     align-self: start;
     border: 1px solid grey;
     border-radius: 10px;
     padding: 25px;
-  }
-.ti{
-    background: white;
+}
+
+.ti {
+    /*background: white;*/
     align-self: start;
 }
-.w-50{
+
+.w-50 {
     position: relative;
     align-self: center;
     margin-top: 2%;
+    font-size: 1.7vh;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .w-50 {
         padding-top: 3%;
         padding-bottom: 3%;
-        font-size: 21px;
+        font-size: 17px;
         border-radius: 8px;
     }
 }
-.back{
+
+.back {
     align-self: center;
     justify-self: center;
-    padding:6px 10px 6px 10px;
-    margin-right: 70px;
-    margin-left: 10px;
+    padding: 6px 10px 6px 10px;
+    margin-right: 3vh;
+    margin-left: 5px;
     margin-top: 2%;
     border-radius: 5px;
     border: none;
 }
-@media(max-device-width: 678px) {
+
+@media (max-device-width: 678px) {
     .back {
-        margin-right: 17%;
+        margin-right: 12%;
     }
 }
-.back:hover{
-   cursor: pointer;
+
+.back:hover {
+    cursor: pointer;
+}
+
+.editButton {
+    color: #81817c;
+    border: 1px solid ;
+    padding: 6px 10px;
+    font-size: 20px;
+    border-radius: 2px;
+}
+
+.editButton:hover {
+   color: #a8acac;
+    text-decoration: none;
 }
 
 .arrow-left span {
@@ -149,22 +186,24 @@
     float: left;
 }
 
-.arrow-left span:nth-child(2){
+.arrow-left span:nth-child(2) {
     animation-delay: -0.1s;
 }
-.arrow-left span:nth-child(3){
+
+.arrow-left span:nth-child(3) {
     animation-delay: -0.2s;
 }
+
 @keyframes arrow-left {
-    0%{
+    0% {
         opacity: 0;
-        transform: rotate(45deg) translate(-0px,-0px);
+        transform: rotate(45deg) translate(-0px, -0px);
     }
-    50%{
+    50% {
         opacity: 1;
     }
-    100%{
+    100% {
         opacity: 0;
-        transform: rotate(45deg) translate(0px,0px);
+        transform: rotate(45deg) translate(0px, 0px);
     }
 }

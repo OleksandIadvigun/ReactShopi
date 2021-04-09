@@ -18,6 +18,17 @@
     text-align: start;
     margin: 15px;
     padding: 5px;
+    align-self: center;
+    /*border: 1px solid white;*/
+}
+.itemAmount{
+    position: relative;
+    color: #2cc3d9;
+    width: 18%;
+    text-align: start;
+    margin: 15px;
+    padding: 5px;
+    align-self: center;
     /*border: 1px solid white;*/
 }
 .itemNumber{
@@ -27,7 +38,7 @@
     text-align: center;
     margin: 15px;
     padding: 5px;
-    border-radius: 100%;
+    align-self: center;
     /*border: 1px solid white;*/
 }
 .itemDateExp{
@@ -37,8 +48,56 @@
     text-align: start;
     margin: 15px;
     padding: 5px;
+    align-self: center;
     /*border: 1px solid white;*/
 }
+.itemExpiration{
+    position: relative;
+    color: #2cc3d9;
+    width: 18%;
+    text-align: start;
+    margin: 15px;
+    padding: 5px;
+    align-self: center;
+    /*border: 1px solid white;*/
+}
+@media(max-device-width: 678px) {
+    .containerP{
+        display: flex;
+        /*flex-direction: column;*/
+    }
+    .itemNumber{
+        margin: 2px;
+        padding: 1px;
+        width: 5%;
+        /*border: 1px solid white;*/
+        align-self: center;
+    }
+    .item{
+        width: 30%;
+        padding: 1px;
+        margin: 2px;
+        /*border: 1px solid white;*/
+        align-self: center;
+    }
+    .itemDateExp{
+        width: 30%;
+        padding: 1px;
+        margin: 2px;
+        /*border: 1px solid white;*/
+        align-self: center;
+
+
+    }
+    .itemExpiration{
+        display: none;
+    }
+    .itemAmount{
+        display: none;
+    }
+}
+
+
 .containerP:hover{
     transition: all 0.2s ease-out;
     border: 1px solid #2cc3d9 ;
@@ -82,7 +141,7 @@
     text-decoration: none;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
 
-    background: linear-gradient(90deg, rgb(16, 203, 63) 0%, rgb(7, 102, 56) 100%);
+    background: linear-gradient(90deg, rgb(32, 167, 65) 0%, rgb(7, 102, 56) 100%);
     /*color: lightgoldenrodyellow;*/
     /*align-self: center;*/
     border: 1px solid #413e3e;

@@ -8,14 +8,15 @@
     align-self: center;
     /*background: #b5b5b5;*/
     width: 80%;
+    min-height: 82vh;
     margin-bottom: 100px;
     transition-property: opacity;
-    transition-duration: 1s;
+    transition-duration: 2s;
 }
 @media(max-device-width: 678px) {
     .container {
         width: 100%;
-        font-size: 20px;
+        font-size: 14px;
     }
 }
 .addProdCont{
@@ -24,22 +25,25 @@
     justify-content: center;
     text-align: center;
     align-self: center;
-    margin-left: 35%;
+    /*margin-left: 35%;*/
     /*background: #e22626;*/
-    width: 63%;
+    width: 300px;
     margin-bottom: 20px;
 }
+
 @media(max-device-width: 678px) {
     .addProdCont {
-        width: 500px;
-        flex-direction: column;
-        margin-left: 1px;
+        /*width: 100vw;*/
+        /*flex-direction: column;*/
+        /*margin-left: 1px;*/
     }
 }
 .googleMaps{
-    width: 60%;
+    width: 100%;
     /*background: #4d9290;*/
+    text-align: end;
 }
+
 @media(max-device-width: 678px) {
     .googleMaps {
         width: 100%;
@@ -53,6 +57,7 @@
 @media(max-device-width: 678px) {
     .coord {
         font-size: 22px;
+        margin-right: 20px;
     }
 }
 .coord:hover{
@@ -73,7 +78,6 @@
 .buttonAdd{
     justify-content: end;
     text-align: end;
-    /*background: #2cc3d9;*/
     align-content: end;
     margin-top: 20px;
 }
@@ -89,7 +93,7 @@
 }
 @media(max-device-width: 678px) {
     .navLink {
-       font-size: 22px;
+       font-size: 18px;
     }
 }
 
@@ -105,7 +109,7 @@
 }
 @media(max-device-width: 678px) {
     .navLink:hover {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 .buttonAdd2{
@@ -128,7 +132,7 @@
 }
 @media(max-device-width: 678px) {
     .navLinkCancel {
-        font-size: 22px;
+        font-size: 18px;
     }
 }
 .navLinkCancel:hover{

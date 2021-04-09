@@ -7,15 +7,48 @@
 .example-enter.example-enter-active {
     opacity: 1;
     transform: translateX(0);
-    transition: opacity 300ms ease-in;
+    transition: opacity 500ms ease-in;
 }
 
-.example-exit {
-    opacity: 1;
-}
+/*.example-exit {*/
+/*    opacity: 1;*/
+/*}*/
+
+/*.example-exit-active {*/
+/*    opacity: 0.01;*/
+/*    transform: scale(0.9);*/
+/*    transition: opacity 900ms ease-in;*/
+/*}*/
+
+
+
+
+/*.example-enter-active {*/
+/*    animation: fadeIN 1s forwards;*/
+/*}*/
 
 .example-exit-active {
-    opacity: 0.01;
-    transform: scale(0.9);
-    transition: opacity 300ms ease-in;
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeIN {
+    0%{
+        opacity: 0;
+        transform: translateX(-400px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
+@keyframes fadeOut {
+    0%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+    100%{
+        opacity: 0;
+        transform: translateX(100%);
+    }
 }

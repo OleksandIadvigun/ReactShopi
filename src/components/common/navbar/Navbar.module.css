@@ -1,6 +1,7 @@
 .navBarWrapper {
     display: flex;
     flex-direction: row;
+    z-index: 5;
 }
 @media(max-device-width: 678px) {
     .navBarWrapper {
@@ -10,20 +11,22 @@
     }
 
 .navbarItems {
-    background: #b12e2e;
-    /*height: 60px;*/
+    /*background: #b12e2e;*/
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 5vh;
     font-size: 1rem;
-    max-width: 95%;
+    width: 600px;
 }
 @media(max-device-width: 678px) {
     .navbarItems {
-        background: #b12e2e;
-        /*width: 100%;*/
-        justify-content: start;
-        align-items: end;
+        display: flex;
+        /*background: #b12e2e;*/
+        width: 70%;
+        height: fit-content;
+        /*justify-content: start;*/
+        /*align-content: end;*/
 }
 }
 
@@ -45,39 +48,118 @@
     grid-template-columns: repeat(6, auto);
     grid-gap: 14px;
     list-style: none;
-    width: 89%;
-    text-align: center;
+    width: 95%;
+    /*text-align: center;*/
+    /*align-content: center;*/
     justify-content: end;
-    background-color: white;
-    align-self: center;
-    justify-self: center;
-
-}
-@media(max-device-width: 678px) {
 
 }
 @media(max-device-width: 678px) {
     .navBarActive {
-        z-index: 100;
-        margin-top: 25px;
         display: flex;
-        height: 400px;
-        align-self: start;
-        text-align: start;
+        position: relative;
+        z-index: 50;
+        opacity: 95%;
+        margin-top: 330px;
+        height: 59vh;
+        background: linear-gradient(90deg, #727272 0%, #333333 100%);
+        font-size: 22px;
+        padding-bottom: 10%;
+        padding-top: 10%;
+        padding-right: 3%;
         flex-direction: column;
         /*margin-bottom: 5px;*/
         justify-content: center;
         width: 100%;
-        font-size: 20px;
-        grid-gap: 2px;
-        background: #61dafb;
-        border-radius: 5px;
+        grid-gap: 10px;
+        border-radius: 15px;
+        transition-property: opacity;
+        transition-duration: 2s;
 
     }
+    .separatorInMenu{
+        display: flex;
+        width: 95%;
+        background: #0f99de;
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+@media(max-device-width: 678px) {
+    .menuBtnClosed{
+        display: none;
+    }
+
+
+    .menuBtn {
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: 2px;
+        align-self: flex-end;
+        justify-self: flex-end;
+        margin-right: -180px;
+        width: 46px;
+        height: 35px;
+        cursor: pointer;
+        z-index: 100;
+    }
+    /* добавляем "гамбургер" */
+    .menuBtn > span,
+    .menuBtn > span::before,
+    .menuBtn > span::after {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        background-color: #d9d7d7;
+    }
+    .menuBtn > span::before {
+        content: '';
+        top: -12px;
+    }
+    .menuBtn > span::after {
+        content: '';
+        top: 12px;
+    }
+}
+
+    .navBarClosed{
+        display: none;
+        transition-property: opacity;
+        transition-duration: 2s;
+    }
+}
+@media(max-device-width: 678px) {
+    .navLinkClose {
+        text-decoration: none;
+        align-self: flex-end;
+        padding: 0.3rem 0.9rem 0.3rem 0.9rem;
+        background: linear-gradient(90deg, rgb(126, 122, 122) 0%, rgb(47, 45, 45) 100%);
+        /*color: lightgoldenrodyellow;*/
+        margin-top: 10%;
+        margin-right: 20px;
+        /*border: 1px solid #413e3e;*/
+        color: #CD5C5C;
+        border-radius: 3px;
+        font-size: 22px;
+    }
+}
+
+
+.navLinkClose:hover{
+    /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
+    background: linear-gradient(90deg, rgb(200, 61, 89) 0%, rgb(160, 4, 4) 100%);
+    border-radius: 4px;
+    border: 1px solid #413e3e;
+    transition: all 0.2s ease-out;
+    color: #dfe0de;
+    text-decoration: none;
+
 }
 .username{
     display: inline;
-    align-self: center;
+
     /*margin-top: 3px;*/
     /*background: linear-gradient(90deg, rgb(168, 181, 180) 0%, rgb(95, 122, 124) 100%);*/
     text-align: center;
@@ -122,17 +204,22 @@
 
 .navLink {
     text-decoration: none;
-    /*padding: 0.3rem 0.8rem 0.2rem 0.8rem;*/
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
+    padding: 0.3rem 0.8rem 0.2rem 0.8rem;
+    /*background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);*/
     color: #CD5C5C;
     transition: all 0.2s ease-out;
     /*border: 1px solid #A4A4A4;*/
     align-self: center;
+    justify-self: end;
     border-radius: 5px;
+    width: max-content;
+    margin: 5px;
 }
+
 @media(max-device-width: 678px) {
     .navLink {
-        padding: 15px 10px 10px 5px;
+        padding: 2px 10px;
+        margin: 1px;
         /*border: 1px solid #A4A4A4;*/
         /*background: #0e9d93;*/
     }
@@ -151,23 +238,26 @@
     text-decoration: none;
     padding: 0.0rem 0.8rem 0.0rem 0.8rem;
     align-self: center;
-    background: linear-gradient(90deg, rgb(231, 245, 245) 0%, rgb(193, 198, 200) 100%);
-    color: #61625b;
+    /*background: linear-gradient(90deg, rgb(231, 245, 245) 0%, rgb(193, 198, 200) 100%);*/
+    color: #898c87;
     transition: all 0.4s ease-out;
     /*color: #2ec3b7;*/
+    border: 1px solid;
     border-radius: 3px;
+    width: max-content;
+    margin: 5px;
 
 }
 @media(max-device-width: 678px) {
     .navLinkClicked {
-        padding: 10px 10px 10px 5px;
+      padding: 5px 10px;
     }
 }
 .navLinkClicked:hover{
-    color: #7f9f4c;
+    color: #81817c;
     text-decoration: none;
     transition: all 0.4s ease-out;
-    background: linear-gradient(90deg, rgb(231, 245, 245) 0%, rgb(193, 198, 200) 100%);
+    /*background: linear-gradient(90deg, rgb(231, 245, 245) 0%, rgb(193, 198, 200) 100%);*/
 }
 .disabled{
     display: none;

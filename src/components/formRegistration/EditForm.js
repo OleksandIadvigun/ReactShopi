@@ -7,6 +7,7 @@ import Steps from "./Steps";
 import RespAfterEdit from "./RespAfterEdit";
 import UserService from "../../services/UserService";
 import MySpinner from "../spinner/MySpinner";
+import SpinnerInside from "../spinner/SpinnerInside";
 
 export default class EditForm extends React.Component {
     constructor() {
@@ -201,13 +202,13 @@ export default class EditForm extends React.Component {
         const message = 'Success! The user has been edited.';
         return (
             this.state.step === 4 ?
-                <div className="response">
+                <div>
                     <RespAfterEdit data={this.state.response} message={message}
                     />
                 </div>
                 :
                 <div className="MyContainer">
-                    {this.state.loader ? MySpinner : <div></div>}
+                    {this.state.loader ? SpinnerInside : <div></div>}
                     <div className="pagination">
                         <button type="button"
                                 className={` ${this.state.doneStep === 0 ? 'navLinkPrevClicked' : 'navLinkPrev'} `}
