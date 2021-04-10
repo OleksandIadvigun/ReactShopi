@@ -1,13 +1,15 @@
 
 .headerTop{
     display: flex;
-    max-width: 100%;
+    width: 100%;
     height: 8vh;
-    /*background-color: #dda7a7;*/
+    background: #242323;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    z-index: 70;
 }
-@media(max-device-width: 678px) {
+@media(max-device-width: 850px) {
     .headerTop {
         /*background-color: #d4bd02;*/
         justify-content: space-between;
@@ -24,10 +26,12 @@
     margin-right: 10px;
     margin-left: 10px;
 
+
 }
 @media(max-device-width: 678px) {
     .headerTopLogo {
-        margin-top: 20px;
+        margin-top: 10px;
+
 
     }
 }
@@ -53,6 +57,7 @@
     text-decoration: inherit;
     font-size: 100px;
 }
+
 .headerTopSeparator{
     width: 100%;
     border: none;

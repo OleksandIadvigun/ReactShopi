@@ -31,12 +31,21 @@
 }
 @media (max-device-height: 767px) {
     .mainContainer {
+        width: 100%;
         height: 1420px;
     }
 }
 @media (max-device-height: 568px) {
     .mainContainer {
+        width: 100%;
         height: 280vh;
+    }
+}
+@media (max-device-height: 468px) {
+    .mainContainer {
+        /*height: 380vw;*/
+        width: 100%;
+        /*background: #61dafb;*/
     }
 }
 /*@media (max-device-height: 568px) {*/
