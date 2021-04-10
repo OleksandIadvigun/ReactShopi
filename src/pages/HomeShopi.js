@@ -4,8 +4,8 @@ import Vidos from './video/Floor.mp4';
 import {Link} from "react-router-dom";
 
 export const HomeShopi = () => {
-    const isLogged =()=>{
-        if(localStorage.getItem('user')!=null){
+    const isLogged = () => {
+        if (localStorage.getItem('user') != null) {
             return true;
         }
     }
@@ -15,13 +15,19 @@ export const HomeShopi = () => {
                 <source src={Vidos} type="video/mp4"/>
             </video>
 
-            {isLogged()? <div className={styles.startButton}><Link to={'/loggedIn'} className={styles.shopi}
-            >Get started </Link></div> : <div className={styles.startButton}><Link to={'/logIn'} className={styles.shopi}
-            >Get started </Link></div>  }
+            {isLogged() ? <div className={styles.startButton}><Link to={'/loggedIn'} className={styles.shopi}
+                >Get started </Link></div> :
+                <div className={styles.startButton}><Link to={'/logIn'} className={styles.shopi}
+                >Get started </Link></div>}
 
             <div className={styles.title}>What is SHOPI?</div>
             <div className={styles.mainContainer}>
-                <div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + `/photos/7ph.png`}/></div>
+                {/*<div className={styles.containerImages}>*/}
+                <div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + `/photos/77.png`}
+                                                        className={styles.imgMain}/></div>
+                {/*<div className={styles.phonePhoto}><img src={process.env.PUBLIC_URL + `/photos/blok.png`}*/}
+                {/*                                        className={styles.imgMain}/></div>*/}
+                {/*</div>*/}
                 <div className={styles.text}><TextContent/>
                     <div className={styles.title2}>Functions:</div>
                     <ul>

@@ -18,10 +18,10 @@ export default function Footer() {
                 </section>
                 <section className={styles.footerInfoCenter}>
                     <section className={styles.footerInfoEmail}>
-                        shopi.info@gmail.com
-                    </section>
-                    <section className={styles.footerInfoTerms}>
-                        All rights reserved
+                        <div className={styles.footerStartContainer}>
+                       <div className={styles.elementCenter}> shopi.info@gmail.com</div>
+                            <div className={styles.elementCenter}> All rights reserved </div>
+                        </div>
                     </section>
                 </section>
                 <section className={styles.footerInfoRight}>

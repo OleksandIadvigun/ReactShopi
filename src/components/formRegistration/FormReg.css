@@ -13,9 +13,11 @@
 }
 @media(max-device-width: 678px) {
     .MyContainer {
+
         max-width: 100%;
         max-height:100%;
         overflow-y: auto;
+
 
     }
 }
@@ -39,6 +41,7 @@
         margin-right: 5px;
         background: #61dafb;
         height: 780px;
+        font-size: 12px;
         /*height: 900px;*/
     }
 }
@@ -55,17 +58,19 @@
     .card {
         margin-top: 1px;
     }
+    .error{
+        font-size: 12px;
+    }
 }
 
 .error{
-    display: block;
     color: #941f1f;
     font-size: 12px;
 }
 @media(max-device-width: 678px) {
     .is-invalid {
         /*background: #0e9d93;*/
-        font-size: 20px;
+        font-size: 13px;
     }
 }
 
@@ -74,6 +79,7 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;
+    font-size: 12px;
     justify-content: space-between;
     margin-top: 2%;
 }
@@ -237,9 +243,9 @@
     background: none;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-left: 100px solid rgb(138, 145, 141);
-    border-bottom: 50px solid transparent;
+    border-top: 30px solid transparent;
+    border-left: 60px solid rgb(138, 145, 141);
+    border-bottom: 30px solid transparent;
     border-right: none;
     transition: .2s linear;
 }
@@ -251,7 +257,7 @@
     }
 }
 .navLinkNext:hover{
-    border-left: 100px solid rgb(94, 96, 96);
+    border-left: 60px solid rgb(94, 96, 96);
     transition: .2s linear;
 
 
@@ -266,9 +272,9 @@
     background: none;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-left: 100px solid rgb(187, 193, 192);
-    border-bottom: 50px solid transparent;
+    border-top: 30px solid transparent;
+    border-left: 60px solid rgb(187, 193, 192);
+    border-bottom: 30px solid transparent;
     border-right: none;
     opacity: 80%;
     transition: .2s linear;
@@ -281,7 +287,7 @@
     }
 }
 .navLinkNextClicked:hover{
-    border-left: 100px solid rgb(171, 179, 176);
+    border-left: 60px solid rgb(171, 179, 176);
     transition: .2s linear;
 }
 @media(max-device-width: 678px) {
@@ -295,9 +301,9 @@
     background: none;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-right: 100px solid rgb(138, 145, 141);
-    border-bottom: 50px solid transparent;
+    border-top: 30px solid transparent;
+    border-right: 60px solid rgb(138, 145, 141);
+    border-bottom: 30px solid transparent;
     border-left: none;
     transition: .2s linear;
 }
@@ -310,7 +316,7 @@
 }
 
 .navLinkPrev:hover{
-    border-right: 100px solid rgb(94, 96, 96);
+    border-right: 60px solid rgb(94, 96, 96);
     transition: .2s linear;
 
 }
@@ -323,9 +329,9 @@
     background: none;
     width: 0;
     height: 0;
-    border-top: 50px solid transparent;
-    border-right: 100px solid rgb(187, 193, 192);
-    border-bottom: 50px solid transparent;
+    border-top: 30px solid transparent;
+    border-right: 60px solid rgb(187, 193, 192);
+    border-bottom: 30px solid transparent;
     border-left: none;
     transition: .2s linear;
     opacity: 50%;
@@ -339,7 +345,7 @@
     }
 }
 .navLinkPrevClicked:hover{
-    border-right: 100px solid rgb(171, 179, 176);
+    border-right: 60px solid rgb(171, 179, 176);
     transition: .2s linear;
 }
 @media(max-device-width: 678px) {
@@ -363,7 +369,7 @@
         margin-left: 12vw;
     }
     .form-check-label{
-        font-size: 20px;
+        font-size: 16px;
         margin-bottom: 10px;
     }
 }
@@ -412,7 +418,7 @@ margin-left: -18px;
 }
 @media(max-device-width: 678px) {
     #checker {
-        margin-left: -23px;
+        margin-left: -18px;
     }
     .form-check-label{
         margin-left: 10px;
@@ -465,6 +471,7 @@ input[type='checkbox']:checked:after {
     margin-top: 20px;
     background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
     border-color: #019cb8 ;
+    border-radius: 1px;
     color: lightgoldenrodyellow;
 }
 #sub:hover{
@@ -550,8 +557,7 @@ select{
     display: none;
 }
 .response{
-    /*margin-top: 15%;*/
-    /*position: relative;*/
+    margin-bottom: 20vh;
     padding: 3%;
     justify-content: center;
     text-align: center;
@@ -563,16 +569,16 @@ select{
 }
 @media(max-device-width: 678px) {
     .response {
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 .mesText{
-    font-size: 18px;
+    font-size: 16px;
     color: #10bad9;
 }
 @media(max-device-width: 678px) {
     .mesText {
-        font-size: 22px;
+        font-size: 16px;
     }
 }
 
@@ -584,13 +590,13 @@ select{
 @media(max-device-width: 678px) {
     .form-group {
         /*background: #0e9d93;*/
-        font-size: 20px;
+        font-size: 16px;
     }
 
     .my{
         /*background: #61dafb;*/
         height: 6vh;
-        font-size: 20px;
+        font-size: 16px;
     }
 }
 .containerResponse{
@@ -611,5 +617,5 @@ select{
     /*background: white;*/
     border: 1px solid #019cb8;
     border-radius: 50px;
-    margin-bottom: 8vh;
+    margin-bottom: 20vh;
 }

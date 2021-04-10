@@ -4,8 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-// import 'axios-progress-bar/dist/nprogress.css';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ReactDOM.render(
   <React.StrictMode>

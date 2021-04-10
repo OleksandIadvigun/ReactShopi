@@ -16,7 +16,7 @@
     .container {
         width: 100vw;
         font-size: 14px;
-        margin-bottom: 50px;
+        margin-bottom: 200px;
         /*background: #b5b5b5;*/
     }
 }
@@ -51,21 +51,21 @@
 .navLink {
     text-decoration: none;
     padding: 0.2rem 0.9rem 0.2rem 0.9rem;
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
-    color: lightgoldenrodyellow;
-    border: none;
+    /*background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);*/
+    border: 1px solid;
     transition: all 0.2s ease-out;
-    border-radius: 4px;
+    border-radius: 1px;
+    background: none;
+    color: #babab7;
 }
 
 .navLink:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
-    background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);
-    color: #f8f8f6;
-    border-radius: 4px;
+    /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
+    color: #019cb8;
     transition: all 0.2s ease-out;
     text-decoration: none;
-    margin-right: 2px;
+    /*margin-right: 2px;*/
 
 }
 .buttonAdd2{
@@ -85,12 +85,12 @@
 .navLinkCancel {
     text-decoration: none;
     padding: 0.2rem 0.9rem 0.2rem 0.9rem;
-    background: linear-gradient(90deg, rgb(43, 164, 156) 0%, rgb(14, 99, 121) 100%);
-    color: lightgoldenrodyellow;
-    border: none;
     margin-left: 1%;
+    border: 1px solid;
     transition: all 0.2s ease-out;
-    border-radius: 4px;
+    border-radius: 1px;
+    background: none;
+    color: #babab7;
 }
 @media(max-device-width: 678px) {
     .navLinkCancel {
@@ -100,11 +100,9 @@
 
 .navLinkCancel:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
-    background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);
-    color: #f8f8f6;
-    border-radius: 4px;
+    color: #019cb8;
+    border-radius: 1px;
     transition: all 0.2s ease-out;
     text-decoration: none;
-    margin-right: 2px;
 
 }

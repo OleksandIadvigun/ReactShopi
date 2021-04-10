@@ -12,6 +12,32 @@
     opacity: 90%;
 
 }
+@media(max-device-width: 678px) {
+    .loading{
+        left: 45%;
+        top: 45%;
+    }
+}
+
+.loadingInside {
+    position: fixed;
+    top: 5%;
+    left: 82%;
+    opacity: 90%;
+
+}
+.loadingInsideForSingUp {
+    position: absolute;
+    top: 5%;
+    left: 82%;
+    opacity: 90%;
+
+}
+@media(max-device-width: 678px) {
+    .loadingInside {
+        left: 80%;
+    }
+}
 
 .loadingForSpinner {
     z-index: 100;

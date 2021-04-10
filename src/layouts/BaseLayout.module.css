@@ -60,7 +60,9 @@ footer {
 }
 @media(max-device-width: 678px) {
     footer {
-        height: 200px;
+        height: 300px;
+        align-content: flex-start;
+        border: 1px solid;
     }
 }
 

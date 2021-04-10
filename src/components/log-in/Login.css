@@ -4,25 +4,27 @@
     flex-direction: column;
     justify-content: center;
     align-self: center;
-    border-radius: 5px;
+    border-radius: 1px;
     min-height: 91vh;
     min-width: 37vh;
     transition-property: opacity;
     transition-duration: 2s;
-    /*border: 1px solid #baa1a1;*/
+    padding-bottom: 15vh;
 }
 
 @media (max-device-width: 678px) {
     .M {
-        /*background: #b5b5b5;*/
+        /*background: #a73e3e;*/
+        min-height: 88vh;
         width: 95vw;
-        margin-bottom: 50px;
+
     }
 }
 
 .center {
     /*background: beige;*/
-    justify-self: center;
+    justify-self: start;
+    margin-bottom: 10vh;
 
 }
 
@@ -47,7 +49,7 @@
 
 @media (max-device-width: 678px) {
     .error {
-        font-size: 19px;
+        font-size: 12px;
     }
 }
 
@@ -70,7 +72,7 @@
 
 @media (max-device-width: 678px) {
     .forgotPass {
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
@@ -89,7 +91,7 @@
 
 @media (max-device-width: 678px) {
     .titlePassword {
-        font-size: 26px;
+        font-size: 22px;
     }
 }
 
@@ -101,12 +103,14 @@
     color: #8f9396;
     padding: 5px;
     font-size: 18px;
+
 }
 
 @media (max-device-width: 678px) {
     .userDetail {
         font-size: 17px;
         width: 95vw;
+
     }
 }
 
@@ -117,6 +121,7 @@
     border: 1px solid grey;
     border-radius: 10px;
     padding: 25px;
+
 }
 
 .ti {

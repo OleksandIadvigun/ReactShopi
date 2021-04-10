@@ -234,9 +234,11 @@ export default class MainFormReg extends React.Component {
 
         return (
             this.state.step === 4 ?
+                <div className="containerResponse">
                 <div className="response">
                     <ResponseAfterReg data={this.state.response}
                     />
+                </div>
                 </div>
                 :
                 <div className="MyContainer">
