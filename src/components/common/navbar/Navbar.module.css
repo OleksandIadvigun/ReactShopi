@@ -13,7 +13,7 @@
     }
 
 .navbarItems {
-    /*background: #242323;*/
+    background: rgba(31, 30, 30, 0.9);
     display: flex;
     justify-content: center;
     align-items: start;
@@ -23,16 +23,32 @@
     width: 600px;
     position: fixed;
     right: 2vh;
+    padding-top: 1vh;
+    border-radius: 5px;
+
+
+}
+.navBarSetBackground{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 5vh;
+    margin-top: 10px;
+    font-size: 1rem;
+    width: 600px;
+    position: fixed;
+    right: 2vh;
+
 }
 /*@media(max-device-width: 678px) {*/
 @media (max-device-width: 812px) {
     .navbarItems {
         display: flex;
-        /*background: #b12e2e;*/
+        background: none;
         width: 70%;
         height: fit-content;
-        /*justify-content: start;*/
-        /*align-content: end;*/
+        padding-top: 0;
+        border-radius: unset;
 }
 }
 
@@ -58,6 +74,7 @@
     /*text-align: center;*/
     /*align-content: center;*/
     justify-content: end;
+    z-index: 5;
 
 
 }
@@ -67,7 +84,7 @@
         display: flex;
         position: fixed;
         z-index: 50;
-        height: 95vh;
+        height: 105vh;
         top: -5%;
         left: 0;
         background: linear-gradient(90deg, #696565 0%, #1c1a1a 100%);
@@ -81,8 +98,6 @@
         width: 100%;
         grid-gap: 10px;
         /*border-radius: 15px;*/
-        transition-property: opacity;
-        transition-duration: 2s;
 
     }
     .separatorInMenu{
