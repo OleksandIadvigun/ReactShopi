@@ -93,6 +93,7 @@
         height: 105vh;
         top: -5%;
         left: 0;
+        opacity: unset;
         background: linear-gradient(90deg, #696565 0%, #1c1a1a 100%);
         font-size: 20px;
         padding-bottom: 15%;

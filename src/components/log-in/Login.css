@@ -5,18 +5,19 @@
     justify-content: center;
     align-self: center;
     border-radius: 1px;
-    min-height: 91vh;
+    min-height: 92vh;
     min-width: 37vh;
     transition-property: opacity;
     transition-duration: 2s;
-    padding-bottom: 15vh;
+    padding-bottom: 10vh;
 }
 
 @media (max-device-width: 678px) {
     .M {
         /*background: #a73e3e;*/
-        min-height: 88vh;
+        min-height: 87vh;
         width: 95vw;
+        padding-bottom: 10vh;
 
     }
 }
@@ -66,11 +67,11 @@
 
 .forgotPass {
     margin-right: 10px;
-    color: #0f99de;
+    color: #6194c1;
     font-size: 16px;
 }
 
-@media (max-device-width: 678px) {
+@media (max-device-width: 850px) {
     .forgotPass {
         font-size: 16px;
     }
@@ -78,7 +79,7 @@
 
 .forgotPass:hover {
     margin-right: 10px;
-    color: #5ccaf3;
+    color: #76abdb;
     cursor: pointer;
 
 }
@@ -88,7 +89,7 @@
     color: #858583;
 }
 
-@media (max-device-width: 678px) {
+@media (max-device-width: 850px) {
     .titlePassword {
         font-size: 22px;
     }

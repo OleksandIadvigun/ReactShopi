@@ -14,15 +14,28 @@
 
 }
 
-
+@media (max-device-width: 770px) {
+    .mainContainer {
+        /*background: #b51818;*/
+        flex: 1 1 auto;
+        width: 100%;
+        flex-direction: column;
+        height: 1500px;
+        z-index: 0;
+    }
+    .videoWrapper {
+        display: none;
+    }
+}
 /*@media (max-device-width: 678px) {*/
-@media (max-device-width: 825px) {
+@media (max-device-width: 678px) {
     .mainContainer {
         /*background: #b51818;*/
         flex: 1 1 auto;
         width: 100%;
         flex-direction: column;
         height: 1900px;
+        z-index: 0;
     }
 
     .videoWrapper {
@@ -33,12 +46,14 @@
     .mainContainer {
         width: 100%;
         height: 1420px;
+        z-index: 0;
     }
 }
 @media (max-device-height: 568px) {
     .mainContainer {
         width: 100%;
         height: 280vh;
+        z-index: 0;
     }
 }
 @media (max-device-height: 468px) {
@@ -46,6 +61,7 @@
         /*height: 380vw;*/
         width: 100%;
         /*background: #61dafb;*/
+        z-index: 0;
     }
 }
 /*@media (max-device-height: 568px) {*/
@@ -56,6 +72,7 @@
 @media (max-device-height: 415px) {
     .mainContainer {
         height: 940px;
+        z-index: 0;
     }
 }
 /*.videoWrapper{*/
@@ -85,7 +102,7 @@
 }
 
 /*@media (max-device-width: 678px) {*/
-@media (max-device-width: 812px) {
+@media (max-device-width: 850px) {
     .phonePhoto {
         /*background: #b51818;*/
         height: 70vh;
@@ -186,12 +203,17 @@
 }
 
 /*@media (max-device-width: 678px) {*/
-    @media (max-device-width: 812px) {
+@media (max-device-width: 850px) {
     .title2 {
         margin-right: 0px;
+        z-index: 0;
     }
     .title {
         margin-top: 20px;
+        z-index: 0;
+    }
+    .startButton {
+        z-index: 0;
     }
 }
 
@@ -208,9 +230,10 @@
 }
 
 /*@media (max-device-width: 678px) {*/
-@media (max-device-width: 812px) {
+@media (max-device-width: 850px) {
     .href {
         font-size: 24px;
+        z-index: 0;
 
     }
 }
@@ -236,7 +259,7 @@ img {
 }
 
 /*@media (max-device-width: 678px) {*/
-@media (max-device-width: 812px) {
+@media (max-device-width: 850px) {
     img {
         max-width: 120%;
     }
