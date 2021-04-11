@@ -4,7 +4,7 @@
     flex-direction: column;
     text-align: center;
     scroll-behavior: smooth;
-    background-image: url("../data/back.jpg");
+    background-image: url("../data/fonR.png");
     color: #8f9396;
     /*background: #e3dcdc;*/
     /*justify-content: space-between;*/
@@ -12,8 +12,8 @@
 
 }
 /*@media(max-device-width: 678px) {*/
-@media (max-device-width: 825px) {
-    mainWrapper {
+@media (max-device-width: 850px) {
+    .mainWrapper {
         width: 100vw;
 
     }

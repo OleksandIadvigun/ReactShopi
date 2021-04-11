@@ -67,7 +67,7 @@
 .forgotPass {
     margin-right: 10px;
     color: #0f99de;
-    font-size: 17px;
+    font-size: 16px;
 }
 
 @media (max-device-width: 678px) {
@@ -79,7 +79,6 @@
 .forgotPass:hover {
     margin-right: 10px;
     color: #5ccaf3;
-    font-size: 17px;
     cursor: pointer;
 
 }
@@ -102,11 +101,11 @@
     line-height: 2;
     color: #8f9396;
     padding: 5px;
-    font-size: 18px;
+    font-size: 17px;
 
 }
 
-@media (max-device-width: 678px) {
+@media (max-device-width: 850px) {
     .userDetail {
         font-size: 17px;
         width: 95vw;
@@ -136,7 +135,7 @@
     font-size: 1.7vh;
 }
 
-@media (max-device-width: 678px) {
+@media (max-device-width: 850px) {
     .w-50 {
         padding-top: 3%;
         padding-bottom: 3%;
@@ -156,7 +155,7 @@
     border: none;
 }
 
-@media (max-device-width: 678px) {
+@media (max-device-width: 850px) {
     .back {
         margin-right: 12%;
     }

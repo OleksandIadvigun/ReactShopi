@@ -6,13 +6,13 @@
 }
 
 .loading {
-    position: absolute;
-    top: 40%;
+    position: fixed;
+    top: 42%;
     left: 49%;
     opacity: 90%;
 
 }
-@media(max-device-width: 678px) {
+@media(max-device-width: 850px) {
     .loading{
         left: 45%;
         top: 45%;
@@ -21,22 +21,31 @@
 
 .loadingInside {
     position: fixed;
-    top: 5%;
-    left: 82%;
+    top: 6%;
+    left: 93%;
     opacity: 90%;
 
 }
+@media(max-device-width: 850px) {
+    .loadingInside {
+        top: 0.8vw;
+        left: 43%;
+        z-index: 100;
+    }
+}
+@media(max-device-height: 450px) {
+    .loadingInside {
+        top: -1.8vw;
+        left: 45%;
+    }
+}
+
 .loadingInsideForSingUp {
     position: absolute;
     top: 5%;
     left: 82%;
     opacity: 90%;
 
-}
-@media(max-device-width: 678px) {
-    .loadingInside {
-        left: 80%;
-    }
 }
 
 .loadingForSpinner {

@@ -50,7 +50,7 @@ export default function Products() {
         return amount < 1000000 && amount > 0;
     }
     const validateExpiration =()=>{
-        return expiration < 365 && expiration > 0;
+        return expiration < 365 && expiration >= 0;
     }
     const addProduct = async (e) => {
         e.preventDefault();

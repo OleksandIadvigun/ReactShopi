@@ -9,7 +9,6 @@
 }
 @media(max-device-width: 850px) {
     .headerTop {
-        /*background-color: #d4bd02;*/
         justify-content: space-between;
         background: #242323;
         width: 100vw;
@@ -31,9 +30,9 @@
 
 
 }
-@media(max-device-width: 678px) {
+@media(max-device-width: 850px) {
     .headerTopLogo {
-        margin-top: 10px;
+        margin-top: 3px;
 
 
     }

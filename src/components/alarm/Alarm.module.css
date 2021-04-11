@@ -14,52 +14,52 @@
 .item{
     position: relative;
     color: #2cc3d9;
-    width: 18%;
+    width: 25%;
     text-align: start;
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     align-self: center;
-    /*border: 1px solid white;*/
+    /*border: 1px solid;*/
 }
 .itemAmount{
     position: relative;
     color: #2cc3d9;
-    width: 18%;
+    width: 12%;
     text-align: start;
-    margin: 15px;
-    padding: 5px;
+    margin: 10px;
+    padding-left: 40px;
     align-self: center;
-    /*border: 1px solid white;*/
+
 }
 .itemNumber{
     position: relative;
     color: #2cc3d9;
     width: 5%;
     text-align: center;
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     align-self: center;
-    /*border: 1px solid white;*/
+
 }
 .itemDateExp{
     position: relative;
     color: #f1545e;
     width: 22%;
     text-align: start;
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     align-self: center;
-    /*border: 1px solid white;*/
+
 }
 .itemExpiration{
     position: relative;
     color: #2cc3d9;
-    width: 18%;
+    width: 12%;
     text-align: start;
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     align-self: center;
-    /*border: 1px solid white;*/
+
 }
 @media(max-device-width: 678px) {
     .containerP{
@@ -141,31 +141,31 @@
     text-decoration: none;
     padding: 0.1rem 0.5rem 0.1rem 0.5rem;
 
-    background: linear-gradient(90deg, rgb(32, 167, 65) 0%, rgb(7, 102, 56) 100%);
-    /*color: lightgoldenrodyellow;*/
+    background: linear-gradient(90deg, rgb(239, 238, 235) 0%, rgb(172, 177, 175) 100%);
+    transition: all 0.9s ease-out;
     /*align-self: center;*/
     border: 1px solid #413e3e;
-    color: #101001;
+    color: #2b2b29;
 
     border-radius: 3px;
     margin-right: 5px;
     /*border: white;*/
 
 }
-@media(max-device-width: 678px) {
+@media(max-device-width: 850px) {
     .navLinkClose {
         padding: 0.2rem 0.7rem 0.2rem 0.7rem;
-        font-size: 22px;
+        font-size: 20px;
     }
 }
 
 .navLinkClose:hover{
     /*background: linear-gradient(90deg, rgb(25, 208, 201) 0%, rgb(21, 139, 169) 100%);*/
-    background: linear-gradient(90deg, rgb(10, 103, 35) 0%, rgb(2, 31, 16) 100%);
+    background: linear-gradient(90deg, rgb(89, 152, 81) 0%, rgb(92, 224, 1) 100%);
     border-radius: 4px;
     border: 1px solid #413e3e;
-    transition: all 0.2s ease-out;
-    color: #e7e4e4;
+    transition: all 0.9s ease-out;
+    /*color: #436206;*/
     text-decoration: none;
 
 }

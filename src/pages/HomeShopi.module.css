@@ -9,7 +9,7 @@
     padding: 13px;
     transition-property: opacity;
     transition-duration: 2s;
-    z-index: 20;
+    z-index: 90;
     height: 82vh;
 
 }
@@ -116,6 +116,7 @@
     /*background-color: white;*/
     border-radius: 5px;
 
+
 }
 @media (max-device-width: 1280px) {
     .text {
@@ -146,7 +147,7 @@
     color: #6d726d;
     height: 5vh;
     font-size: 19px;
-    z-index: 2;
+    z-index: 90;
     /*background: #2a88c6;*/
 }
 
@@ -154,6 +155,7 @@
     color: #CD5C5C;
     border: 1px solid;
     padding: 4px;
+    z-index: 90;
 }
 
 .shopi:hover {
@@ -168,7 +170,7 @@
     height: 4.3vh;
     font-size: 20px;
     margin-bottom: 5px;
-    z-index: 2;
+    z-index: 90;
     /*background: #61dafb;*/
 }
 
@@ -247,5 +249,5 @@ img {
     height: 100%;
     object-fit: cover;
     transform: translate(-50%, -50%);
-    z-index: 1;
+    z-index: 80;
 }

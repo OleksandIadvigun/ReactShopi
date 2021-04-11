@@ -15,21 +15,36 @@
     color: #2cc3d9;
     width: 23%;
     text-align: start;
-    margin: 15px;
-    padding-left: 5%;
+    align-self: center;
+    margin: 10px;
+    padding-left: 2%;
     z-index: 0;
+    /*border: 1px solid;*/
 
 }
 .itemNumber {
     position: relative;
     color: #2cc3d9;
     width: 5%;
+    align-self: center;
     text-align: start;
     margin: 15px;
     padding-left: 1%;
     z-index: 1;
-
+    /*border: 1px solid;*/
 }
+.itemExpiration{
+    position: relative;
+    color: #2cc3d9;
+    width: 23%;
+    align-self: center;
+    text-align: start;
+    margin: 10px;
+    padding-left: 10%;
+    z-index: 0;
+    /*border: 1px solid;*/
+}
+
 @media(max-device-width: 678px) {
     .containerP{
         display: flex;
@@ -56,10 +71,10 @@
         /*border: 1px solid white;*/
         align-self: center;
 
-
     }
     .itemExpiration{
-        display: none;
+        width: 22%;
+        padding-left: 1%;
     }
     .itemAmount{
         display: none;
