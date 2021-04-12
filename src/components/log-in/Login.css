@@ -21,7 +21,15 @@
 
     }
 }
+@media (max-device-height: 415px) {
+    .M {
+        /*background: #a73e3e;*/
+        min-height: 88vh;
+        width: unset;
+        /*padding-bottom: 15vh;*/
 
+    }
+}
 .center {
     /*background: beige;*/
     justify-self: start;
@@ -108,8 +116,8 @@
 
 @media (max-device-width: 850px) {
     .userDetail {
-        font-size: 17px;
-        width: 95vw;
+        font-size: 19px;
+        width: 98vw;
 
     }
 }

@@ -64,7 +64,8 @@
 @media(max-device-width: 678px) {
     .containerP{
         display: flex;
-        /*flex-direction: column;*/
+        background: linear-gradient(90deg, #2f2b2b 0%, #161816 100%);
+        font-size: 16px;
     }
     .itemNumber{
         margin: 2px;

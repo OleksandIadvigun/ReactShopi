@@ -19,7 +19,7 @@
     margin: 10px;
     padding-left: 2%;
     z-index: 0;
-    /*border: 1px solid;*/
+
 
 }
 .itemNumber {
@@ -48,21 +48,25 @@
 @media(max-device-width: 678px) {
     .containerP{
         display: flex;
+        background: linear-gradient(90deg, #2f2b2b 0%, #161816 100%);
+        font-size: 16px;
         /*flex-direction: column;*/
     }
     .itemNumber{
         margin: 2px;
-        padding: 1px;
+        padding: 1px 1px 1px 5px;
         width: 5%;
         /*border: 1px solid white;*/
         align-self: center;
+
     }
     .item{
-        width: 30%;
+        width: 34%;
         height: fit-content;
         padding: 1px;
         margin: 2px;
         align-self: center;
+
     }
     .itemDateExp{
         width: 30%;
@@ -71,10 +75,12 @@
         /*border: 1px solid white;*/
         align-self: center;
 
+
     }
     .itemExpiration{
         width: 22%;
         padding-left: 1%;
+
     }
     .itemAmount{
         display: none;

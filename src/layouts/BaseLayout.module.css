@@ -15,6 +15,7 @@
 @media (max-device-width: 850px) {
     .mainWrapper {
         width: 100vw;
+        background-image: url("../data/fonPhone.jpg");
 
     }
 }
